@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeContentViewCell" customModule="VocabularyGame" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yb-Fu-UK0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="njg-cs-sQh">
+                            <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                    <color key="textColor" red="0.51764705882352935" green="0.23137254901960785" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="23"/>
+                    </variation>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v0w-xa-8Ra">
+                    <rect key="frame" x="6" y="27" width="363" height="567.5"/>
+                    <color key="backgroundColor" red="0.61960784313725492" green="0.84313725490196079" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GtE-3b-Bxt" customClass="RatingControl" customModule="VocabularyGame" customModuleProvider="target">
+                    <rect key="frame" x="16" y="596.5" width="343" height="68.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="GtE-3b-Bxt" secondAttribute="height" multiplier="5:1" id="Gyd-AB-MqJ"/>
+                    </constraints>
+                </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EditIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FPz-9N-7Bo">
+                    <rect key="frame" x="355" y="8" width="12" height="12"/>
+                    <color key="tintColor" red="0.51764705879999995" green="0.23137254900000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="2Sx-8B-xlm">
+                            <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="12" id="HnI-xD-gCu">
+                            <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                        </constraint>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockLevel" translatesAutoresizingMaskIntoConstraints="NO" id="mfg-Q8-LRV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="mfg-Q8-LRV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Zp-Tv-Vzv"/>
+                <constraint firstItem="v0w-xa-8Ra" firstAttribute="top" secondItem="5Yb-Fu-UK0" secondAttribute="bottom" constant="2" id="0aj-ew-OKl"/>
+                <constraint firstItem="5Yb-Fu-UK0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2qL-82-8YV"/>
+                <constraint firstAttribute="trailing" secondItem="v0w-xa-8Ra" secondAttribute="trailing" constant="6" id="8TG-DR-UnS"/>
+                <constraint firstItem="GtE-3b-Bxt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="A09-gp-h0u"/>
+                <constraint firstItem="GtE-3b-Bxt" firstAttribute="top" secondItem="v0w-xa-8Ra" secondAttribute="bottom" constant="2" id="GNs-CT-T9M"/>
+                <constraint firstAttribute="trailing" secondItem="GtE-3b-Bxt" secondAttribute="trailing" constant="16" id="IXQ-sV-eNS">
+                    <variation key="heightClass=regular-widthClass=regular" constant="26"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="5Yb-Fu-UK0" secondAttribute="trailing" id="NX5-bt-JQF"/>
+                <constraint firstAttribute="trailing" secondItem="mfg-Q8-LRV" secondAttribute="trailing" id="QDw-YA-6L1"/>
+                <constraint firstAttribute="bottom" secondItem="GtE-3b-Bxt" secondAttribute="bottom" constant="2" id="RDZ-lE-YEt"/>
+                <constraint firstItem="FPz-9N-7Bo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Svy-PN-nm8">
+                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="FPz-9N-7Bo" secondAttribute="trailing" constant="8" id="Vpl-he-rfu">
+                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                </constraint>
+                <constraint firstItem="5Yb-Fu-UK0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kJh-kL-FKX"/>
+                <constraint firstAttribute="bottom" secondItem="mfg-Q8-LRV" secondAttribute="bottom" id="qY9-dB-2pY"/>
+                <constraint firstItem="GtE-3b-Bxt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="xYJ-NB-pob">
+                    <variation key="heightClass=regular-widthClass=regular" constant="26"/>
+                </constraint>
+                <constraint firstItem="v0w-xa-8Ra" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="xtG-3i-i5O"/>
+                <constraint firstItem="mfg-Q8-LRV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ykb-Xk-qlg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="editIcon" destination="FPz-9N-7Bo" id="2CW-12-jpb"/>
+                <outlet property="lessonImage" destination="v0w-xa-8Ra" id="wun-TP-Ozo"/>
+                <outlet property="lessonLevelLabel" destination="5Yb-Fu-UK0" id="1Re-Qg-7KF"/>
+                <outlet property="lockView" destination="mfg-Q8-LRV" id="xXa-Zq-nPW"/>
+                <outlet property="ratingControll" destination="GtE-3b-Bxt" id="lp2-me-ZJk"/>
+            </connections>
+            <point key="canvasLocation" x="-190.5" y="-210.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="EditIcon" width="52" height="52"/>
+        <image name="lockLevel" width="50" height="50"/>
+    </resources>
+</document>
