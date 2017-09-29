@@ -28,20 +28,6 @@ class LessonModel: NSObject {
                             break
                         }
 
-                        var lessonList: [LessonItem?] = []
-                        
-                        for iLesson in 0...(lessons.count - 1){
-                            let id = lessons[iLesson]["id"].string
-                            let name = lessons[iLesson]["name"].string!
-                            let image = lessons[iLesson]["imageURL"].string
-                            let audio = lessons[iLesson]["audioURL"].string
-                            let defination = lessons[iLesson]["defination"].string
-                            let example = lessons[iLesson]["example"].string
-                            let spelling = lessons[iLesson]["spelling"].string
-                            let lessonItem = LessonItem(id: id, name: name, image: image, audio: audio, defination: defination, example: example, spelling: spelling)
-                            lessonList.append(lessonItem)
-                        }
-                        
                         guard let randomNumber = json[index]["levelNumberRandom"].int else{
                             debugPrint("levelNumberRandom is nil")
                             continue
@@ -57,7 +43,7 @@ class LessonModel: NSObject {
                             continue
                         }
                         
-                        guard let name = json[index]["levelName"].string else{
+                        guard let levelName = json[index]["levelName"].string else{
                             debugPrint("levelName is nil")
                             continue
                         }
@@ -72,7 +58,21 @@ class LessonModel: NSObject {
                             continue
                         }
                         
-                        let level = Level(isOpenned: false, name: name, id: id, priority: priority, time: time, randomNum: randomNumber, thumnail: thumnail, listVocabulary: lessonList as! Array<LessonItem>)
+                        var lessonList: [LessonItem?] = []
+                        
+                        for iLesson in 0...(lessons.count - 1){
+                            let id = lessons[iLesson]["id"].string
+                            let name = lessons[iLesson]["name"].string!
+                            let image = lessons[iLesson]["imageURL"].string
+                            let audio = lessons[iLesson]["audioURL"].string
+                            let defination = lessons[iLesson]["defination"].string
+                            let example = lessons[iLesson]["example"].string
+                            let spelling = lessons[iLesson]["spelling"].string
+                            let lessonItem = LessonItem(levelName: levelName, id: id, name: name, image: image, audio: audio, defination: defination, example: example, spelling: spelling)
+                            lessonList.append(lessonItem)
+                        }
+                        
+                        let level = Level(isOpenned: false, name: levelName, id: id, priority: priority, time: time, randomNum: randomNumber, thumnail: thumnail, listVocabulary: lessonList as! Array<LessonItem>)
                         
                         levelItems.append(level!)
                     }

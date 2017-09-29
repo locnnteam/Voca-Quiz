@@ -36,20 +36,20 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     private var numsFailed = 0 {
         didSet {
             lessonNavView.ratingControl.rating = 5 - numsFailed
-            if numsFailed == maxfailed + 1{
+            if numsFailed == maxfailed{
                 self.backToHome(alertType: .OutOfHearts, showPopup: true)
             }
         }
     }
     
-    var colView: UICollectionView!
     private var alertView: SCLAlertView?
     @IBOutlet weak var lessonNavView: LessonNavView!
     @IBOutlet weak var audioButton: UIButton!
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var translateButton: UIButton!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var labelView: UIView!
-    
+    @IBOutlet weak var colView: UICollectionView!
     
     let customNavigationAnimationController = CustomNavigationAnimationController()
     let customInteractionController = CustomInteractionController()
@@ -79,18 +79,9 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.listVocabulary = listVocabulary
     }
     
-    func getImage(nameImage: String) -> UIImage {
-        let filePath = DocumentsURL.appendingPathComponent("\(self.name!)/\(nameImage).png").path
-        if FileManager.default.fileExists(atPath: filePath) {
-            return UIImage(contentsOfFile: filePath)!
-        }else{
-            return #imageLiteral(resourceName: "default")
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = BackgroundColor.LessonBackground
+        //self.view.backgroundColor = BackgroundColor.LessonBackground
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
@@ -100,21 +91,23 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         lessonNavView.setTimeToFinished(duration: self.durationLesson!)
         lessonNavView.delegate = self
         
+        // Normal state
+        self.audioButton.setImage(#imageLiteral(resourceName: "audioDict"), for: .normal)
+        // Highlighted state (before button is selected)
+        self.audioButton.setImage(#imageLiteral(resourceName: "btnAudio"), for: .highlighted)
+        // Selected state
+        self.audioButton.setImage(#imageLiteral(resourceName: "btnAudio"), for: .selected)
+        
         self.labelView.layer.cornerRadius = keyLabel.layer.frame.size.height/2
         self.labelView.layer.borderWidth = 1.0
         self.labelView.layer.borderColor = UIColor(red: 211/255, green: 218/255, blue: 224/255, alpha: 1).cgColor
-        self.labelView.layer.backgroundColor = UIColor.white.cgColor
-        
-        let layout = UICollectionViewFlowLayout()
-        colView = UICollectionView(frame: CGRect(x: 0, y: 140, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 130), collectionViewLayout: layout)
-        colView.delegate   = self
-        colView.dataSource = self
-        colView.backgroundColor = BackgroundColor.LessonBackground
-        
+ 
         colView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
         colView.register(UINib(nibName: "LessonViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        self.view.addSubview(colView)
+
+        colView.delegate   = self
+        colView.dataSource = self
         
         loadListVocabulary()
         self.audioPlayer = AudioPlayer()
@@ -131,13 +124,13 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        if self.lessonNavView.countDownLabel.isPaused{
+            lessonNavView.countDownLabel.start()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if self.lessonNavView.countDownLabel.isPaused{
-            lessonNavView.countDownLabel.start()
-        }
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(Notification.Name.UIApplicationWillResignActive)
@@ -157,9 +150,9 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
     
     func loadListVocabulary(){
         //Setup list vocabulay to learn        
@@ -187,7 +180,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
             return cell
         }
         
-        let image = getImage(nameImage: (item.name))
+        let image = Helper.getImage(nameImage: item.name, nameFolder: self.name!)
         cell.imageLessonView.image = image
         cell.selectedView.isHidden = true
         
@@ -392,8 +385,6 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     // MARK: Controller view cycle
     // ca-app-pub-7818146390468896/9219733068
     func backToHome(alertType: AlertPopupType, showPopup: Bool) {
-        //clean up and show alert
-        cleanUp()
         if showPopup{
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false,
@@ -424,6 +415,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
             kAppDelegate.showInterstialAd(adRootVC: self)
             
         }else{
+            self.cleanUp()
             guard (navigationController?.popViewController(animated:true)) != nil
                 else {
                     dismiss(animated: true, completion: nil)
@@ -438,6 +430,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     func buttonDoneTapped() {
+        self.cleanUp()
         guard (navigationController?.popViewController(animated:true)) != nil
             else {
                 dismiss(animated: true, completion: nil)
@@ -446,6 +439,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func buttonTryAgainTapped() {
+        self.cleanUp()
         loadListVocabulary()
         nextView(numberImage: self.numImageFirst)
         lessonNavView.setTimeToFinished(duration: self.durationLesson!)
@@ -478,18 +472,13 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.numsFailed += 1
         self.lessonNavView.countDownLabel.pause()
         
-//        self.colView.isHidden = true
-//        self.labelView.isHidden = true
-//
-//        self.dictionaryView.delegate = self
-//        self.dictionaryView.isHidden = false
-//        self.dictionaryView.fadeIn(duration: 0.1)
-//
-        //Load data from keyID
-        let dictionaryVC = DictionaryViewController()
-        let lessonItem = listVocabulary[Int(keyID)!]
-        dictionaryVC.initDictionaryVC(lessonItem: lessonItem)
-        self.navigationController?.pushViewController(dictionaryVC, animated: true)
+        if numsFailed < (maxfailed) {
+            //Load data from keyID
+            let dictionaryVC = DictionaryViewController()
+            let lessonItem = listVocabulary[Int(keyID)!]
+            dictionaryVC.initDictionaryVC(lessonItem: lessonItem)
+            self.navigationController?.pushViewController(dictionaryVC, animated: true)
+        }
     }
 }
 

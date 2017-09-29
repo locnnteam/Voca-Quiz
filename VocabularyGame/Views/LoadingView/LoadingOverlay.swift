@@ -23,7 +23,7 @@ public class LoadingOverlay{
     }
     
     public func showOverlay(view: UIView!) {
-        overlayView = UIView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        overlayView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         overlayView.backgroundColor = UIColor.white
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         activityIndicator.color = BackgroundColor.NavigationBackgound

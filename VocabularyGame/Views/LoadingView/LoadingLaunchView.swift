@@ -24,14 +24,14 @@ public class LoadingLaunchView{
         
         let title = UILabel()
         title.text = "Vocabulary Game Start"
-        title.font = title.font.withSize(FontSizeCustom.getFontSize())
+        title.font = UIFont(name: "OpenSans", size: FontSizeCustom.getFontSize())
         title.textAlignment = .center
         title.sizeToFit()
         title.textColor = .white
-        title.center = overlayView.center
+        title.center = CGPoint(x: overlayView.frame.size.width/2, y: overlayView.frame.height/2 - 64.0)
         overlayView.addSubview(title)
         
-        overlayView.backgroundColor = BackgroundColor.LoadingLaunchBkg
+        overlayView.backgroundColor = BackgroundColor.NavigationBackgound
         view.addSubview(overlayView)
     }
     

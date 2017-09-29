@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteViewController" customModule="VocabularyGame" customModuleProvider="target">
+            <connections>
+                <outlet property="labelView" destination="SL5-iC-Q3D" id="44i-k3-pIc"/>
+                <outlet property="tableView" destination="Jyd-sw-4Mz" id="ljQ-MT-Sdl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jyd-sw-4Mz">
+                    <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="szq-iH-WC4"/>
+                        <outlet property="delegate" destination="-1" id="c1Z-gu-Qvi"/>
+                    </connections>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-iC-Q3D">
+                    <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀 Ohh, you have not any favorite vocabularies yet. Let add and return to enjoy." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUk-b2-ZeU">
+                            <rect key="frame" x="30" y="322.33333333333331" width="315" height="90"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="32"/>
+                            </variation>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="LUk-b2-ZeU" firstAttribute="centerX" secondItem="SL5-iC-Q3D" secondAttribute="centerX" id="C1A-5i-V4d"/>
+                        <constraint firstAttribute="trailing" secondItem="LUk-b2-ZeU" secondAttribute="trailing" constant="30" id="ST4-pF-8WD"/>
+                        <constraint firstItem="LUk-b2-ZeU" firstAttribute="centerY" secondItem="SL5-iC-Q3D" secondAttribute="centerY" id="oKj-g3-Sd3"/>
+                        <constraint firstItem="LUk-b2-ZeU" firstAttribute="leading" secondItem="SL5-iC-Q3D" secondAttribute="leading" constant="30" id="yz0-pv-cye"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Jyd-sw-4Mz" secondAttribute="bottom" id="Km1-cV-QJq"/>
+                <constraint firstItem="SL5-iC-Q3D" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LYb-Lr-bA5"/>
+                <constraint firstItem="SL5-iC-Q3D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ROj-sX-d8g"/>
+                <constraint firstItem="Jyd-sw-4Mz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Tio-Y0-62o"/>
+                <constraint firstItem="SL5-iC-Q3D" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZTh-w8-qtF"/>
+                <constraint firstItem="Jyd-sw-4Mz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oBj-B0-7c5"/>
+                <constraint firstItem="SL5-iC-Q3D" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="u2W-xu-iWX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Jyd-sw-4Mz" secondAttribute="trailing" id="xCQ-sv-QwB"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="85"/>
+        </view>
+    </objects>
+</document>

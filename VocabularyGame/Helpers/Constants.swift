@@ -11,7 +11,7 @@ import UIKit
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 
 enum FireBaseURL{
-    static let jsonHomeDataURL = "https://firebasestorage.googleapis.com/v0/b/vocabularygame-53c28.appspot.com/o/Voca%2FVocabularyGame_V2.json?alt=media&token=6666dba1-6362-428e-894a-38add91f7dc4"//"https://firebasestorage.googleapis.com/v0/b/vocabularygame-b034c.appspot.com/o/Words%2FVocabularyGame.json?alt=media&token=426eaac9-6e28-4aa1-bffe-9638cc010cd8"
+    static let jsonHomeDataURL = "https://firebasestorage.googleapis.com/v0/b/vocabularygame-b034c.appspot.com/o/Words%2FVocabularyGame_V02.json?alt=media&token=8a933fbe-3f07-438d-a845-2dc5dbbc41b3"
     
     static let jsonAdsIDURL = "https://firebasestorage.googleapis.com/v0/b/vocabularygame-b034c.appspot.com/o/Words%2FGGAdsID.json?alt=media&token=e5cdb797-64fd-4cc2-918b-55c51d6e6f7f"
 }

@@ -16,4 +16,13 @@ class Helper {
                 closure()
             }
     }
+    
+    static func getImage(nameImage: String, nameFolder: String) -> UIImage {
+        let filePath = DocumentsURL.appendingPathComponent("\(nameFolder)/\(nameImage).png").path
+        if FileManager.default.fileExists(atPath: filePath) {
+            return UIImage(contentsOfFile: filePath)!
+        }else{
+            return #imageLiteral(resourceName: "default")
+        }
+    }
 }

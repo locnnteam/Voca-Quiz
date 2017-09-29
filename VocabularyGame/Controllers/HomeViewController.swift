@@ -21,18 +21,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private var levels: [Level] = []
     private var lessonVC: LessonViewController?
     private var lessonTyping: LessonTypingViewController?
-    
-    private var isMainView = true
+    var isMainView = true
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var headerView: HeaderMainView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.isHidden = true
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         LoadingOverlay.shared.hideOverlayView()
         self.collectionView?.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        LoadingLaunchView.shared.hideOverlayView()
     }
     
     override func viewDidLoad() {
@@ -49,9 +53,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         //UI
         self.collectionView?.backgroundColor = BackgroundColor.HomeBackground
-        
-        //Header
-        self.headerView.delegate = self
         
         //firebase analyst
         Analytics.logEvent("Open App", parameters: [
@@ -94,9 +95,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: LessonDelegate
     func showTypingQuiz(levelName: String) {
-        self.headerView.segmentedControl.selectedSegmentIndex = 1
-        selectedMenuItem(index: 1)
-        
         var level = self.levels[0]
         for index in 1..<self.levels.count {
             let prevLevel = self.levels[index - 1]

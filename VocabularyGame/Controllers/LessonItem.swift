@@ -13,6 +13,7 @@ class LessonItem {
     
     //MARK: Properties
     
+    var levelName: String
     var id: String?
     var name: String
     var image: String?
@@ -25,7 +26,7 @@ class LessonItem {
     
     //MARK: Initialization
     
-    init?(id: String?, name: String?, image: String?, audio: String?, defination: String?,example: String?, spelling: String?) {
+    init?(levelName: String, id: String?, name: String?, image: String?, audio: String?, defination: String?,example: String?, spelling: String?) {
         
         guard let name = name else {
             return nil
@@ -38,6 +39,7 @@ class LessonItem {
         }
         
         // Initialize stored properties.
+        self.levelName = levelName
         self.id = id
         self.name = name
         self.image = image

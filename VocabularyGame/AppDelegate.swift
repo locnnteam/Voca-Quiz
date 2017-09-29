@@ -18,11 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
 
     var window: UIWindow?
     var nav: UINavigationController?
+    var tabbarController = UITabBarController()
 
     var interstitialAd: GADInterstitial!
     
     lazy var homeVC: HomeViewController = {
         return HomeViewController(nibName: "HomeViewController", bundle: nil)
+    }()
+    
+    lazy var homeTypingVC: HomeViewController = {
+        return HomeViewController(nibName: "HomeViewController", bundle: nil)
+    }()
+    
+    lazy var favoritesVC: FavoriteViewController = {
+        return FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
     }()
     
     var adRootInterstitialVC: UIViewController!
@@ -32,12 +41,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         FirebaseApp.configure()
         UIApplication.shared.statusBarStyle = .lightContent
         
-        nav = UINavigationController(rootViewController: self.homeVC)
-        self.window?.rootViewController = self.nav
-        //self.window?.rootViewController = self.homeVC
-        
         self.initAdmobPub()
         
+        //TabarView
+        homeVC.title = "Picture Pickup"
+        homeVC.isMainView = true
+        homeVC.tabBarItem = UITabBarItem(title: "Picture", image: #imageLiteral(resourceName: "picture_pickup"), selectedImage: #imageLiteral(resourceName: "picture_pickup_selected"))
+
+        homeTypingVC.title = "Typing Quiz"
+        homeTypingVC.isMainView = false
+        homeTypingVC.tabBarItem = UITabBarItem(title: "Typing", image: #imageLiteral(resourceName: "typing"), selectedImage: #imageLiteral(resourceName: "typing_selected"))
+        
+        favoritesVC.title = "Favorites"
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        
+        let controllers = [homeVC, homeTypingVC, favoritesVC] as [Any]
+        tabbarController.viewControllers = controllers as? [UIViewController]
+        tabbarController.viewControllers = controllers.map { UINavigationController(rootViewController: $0 as! UIViewController)}
+        
+        //nav = UINavigationController(rootViewController: self.homeVC)
+        self.window?.rootViewController = self.tabbarController
+        
+        // Changing the navigation controller's background colour
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "OpenSans", size: 10)!], for: .normal)
+        
+        UINavigationBar.appearance().barStyle = .black
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = BackgroundColor.NavigationBackgound
+        // Changing the navigation controller's title colour
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        // Changing the colour of the bar button items
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes =  [NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: FontSizeCustom.getFontSize())!]
+        
+        // Changing the tint colour of the tab bar icons
+        UITabBar.appearance().tintColor = UIColor(red: 2.0/255, green: 166.0/255.0, blue: 250.0/255.0, alpha: 1.0)
+        UITabBar.appearance().barTintColor = .white
+        UITabBar.appearance().backgroundColor = BackgroundColor.HomeBackground
         return true
     }
 

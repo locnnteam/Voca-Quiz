@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BonMot
 
 protocol DictionaryViewDelegate {
     func audioDictPlay(audio: String?)
@@ -50,19 +49,19 @@ class DictionaryView: UIView {
         self.addSubview(view)
     }
     
-    func loadDataDictionaryView(word: String, spelling: String?, defination: String?, example: String?){
-        self.word = word
-        self.spelling = spelling
-        self.defination = defination
-        self.example = example
+    func loadDataDictionaryView(lessonItem: LessonItem){
+        self.word = lessonItem.name
+        self.spelling = lessonItem.spelling
+        self.defination = lessonItem.defination
+        self.example = lessonItem.example
         
-        self.wordLabel.text = word
+        self.wordLabel.text = self.word
         self.spellingLabel.text = "[" + spelling! + "]"
         
         guard let defination = defination else {
             return
         }
-        self.definationLabel.text = "➭ \(word): " + defination
+        self.definationLabel.text = "➭ \(self.word!): " + defination
         
         guard let example = example else {
             return

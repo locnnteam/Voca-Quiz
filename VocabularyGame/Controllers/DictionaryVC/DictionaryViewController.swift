@@ -10,18 +10,11 @@ import UIKit
 
 class DictionaryViewController: UIViewController {
     @IBOutlet weak var dictionaryView: DictionaryView!
-    let coreData: CoreDataOperations = CoreDataOperations()
-    
-    var word: String!
-    var defination: String?
-    var spelling: String?
-    var example: String?
+    var lessonItem: LessonItem!
+    var audioPlayer = AudioPlayer()
     
     func initDictionaryVC(lessonItem: LessonItem){
-        self.word = lessonItem.name
-        self.defination = lessonItem.defination
-        self.spelling = lessonItem.spelling
-        self.example = lessonItem.example
+        self.lessonItem = lessonItem
     }
     
     override func viewDidLoad() {
@@ -29,7 +22,7 @@ class DictionaryViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.dictionaryView.delegate = self
-        self.dictionaryView.loadDataDictionaryView(word: self.word, spelling: self.spelling, defination: self.defination, example: self.example)
+        self.dictionaryView.loadDataDictionaryView(lessonItem: self.lessonItem)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,14 +34,8 @@ class DictionaryViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         
-        //Seleted favorite
-        let favorites = coreData.fetchData()
-        for fav in favorites {
-            if self.word == fav.value(forKeyPath: "name") as? String {
-                self.dictionaryView.favoriteButton.isSelected = true
-                break
-            }
-        }
+        let isFavorites = CoreDataOperations().iskExistObject(word: self.lessonItem.name)
+        self.dictionaryView.favoriteButton.isSelected = isFavorites
     }
 
     // MARK: - Navigation
@@ -63,16 +50,22 @@ class DictionaryViewController: UIViewController {
 
 extension DictionaryViewController: DictionaryViewDelegate {
     func audioDictPlay(audio: String?) {
+        let audioName = self.lessonItem.name
+        let levelName = self.lessonItem.levelName
         
+        let filePath = DocumentsURL.appendingPathComponent("\(levelName)/\(audioName).mp3").path
+        if FileManager.default.fileExists(atPath: filePath) {
+            audioPlayer.playAudioLocal(audio: filePath)
+        }
     }
     
     func favoriteDictAdd(word: String?) {
         if self.dictionaryView.favoriteButton.isSelected {
-            coreData.delete(name: word!)
+            CoreDataOperations().deleteRecords(lessonItem: self.lessonItem)
             self.dictionaryView.favoriteButton.isSelected = false
         } else {
             self.dictionaryView.favoriteButton.isSelected = true
-            coreData.save(name: word!)
+            CoreDataOperations().saveData(lessonItem: self.lessonItem)
         }
     }
 }

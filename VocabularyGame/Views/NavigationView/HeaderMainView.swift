@@ -28,7 +28,7 @@ class HeaderMainView: UIView {
     }
     
     func loadViewFromNib() {
-        let height = 64
+        let height = 44
         self.frame = CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width), height: height)
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "HeaderMainView", bundle: bundle)
@@ -37,7 +37,7 @@ class HeaderMainView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(view)
         
-        let font = UIFont(name: "Helvetica Neue", size: FontSizeCustom.getFontSize())
+        let font = UIFont(name: "OpenSans-Bold", size: FontSizeCustom.getFontSize())
         self.segmentedControl.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
     }
 

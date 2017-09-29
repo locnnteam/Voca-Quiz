@@ -12,6 +12,5 @@ pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.gi
 pod 'M13ProgressSuite'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
-pod 'BonMot'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 end

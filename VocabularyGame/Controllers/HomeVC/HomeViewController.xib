@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="VocabularyGame" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="LIW-Lq-WF6" id="ReT-if-x8X"/>
-                <outlet property="headerView" destination="mB6-jN-kyn" id="6gr-vt-Iuv"/>
                 <outlet property="view" destination="1eH-kh-nhl" id="7QO-5B-FjX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1eH-kh-nhl">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mB6-jN-kyn" customClass="HeaderMainView" customModule="VocabularyGame" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="7cf-K5-Evl"/>
-                    </constraints>
-                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LIW-Lq-WF6">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0P0-20-4Bt">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -44,15 +36,13 @@
                 </collectionView>
             </subviews>
             <constraints>
-                <constraint firstItem="mB6-jN-kyn" firstAttribute="leading" secondItem="LIW-Lq-WF6" secondAttribute="leading" id="7pQ-8p-INa"/>
-                <constraint firstItem="LIW-Lq-WF6" firstAttribute="leading" secondItem="1eH-kh-nhl" secondAttribute="leading" id="D1H-VV-pmd"/>
-                <constraint firstAttribute="bottom" secondItem="LIW-Lq-WF6" secondAttribute="bottom" id="DBK-uX-nVr"/>
-                <constraint firstItem="mB6-jN-kyn" firstAttribute="trailing" secondItem="LIW-Lq-WF6" secondAttribute="trailing" id="J2H-7r-TbK"/>
-                <constraint firstAttribute="trailing" secondItem="LIW-Lq-WF6" secondAttribute="trailing" id="LqV-kg-8PA"/>
-                <constraint firstItem="mB6-jN-kyn" firstAttribute="top" secondItem="1eH-kh-nhl" secondAttribute="top" id="ThW-dH-Zv8"/>
-                <constraint firstItem="LIW-Lq-WF6" firstAttribute="top" secondItem="mB6-jN-kyn" secondAttribute="bottom" id="ae5-pQ-nIH"/>
+                <constraint firstItem="LIW-Lq-WF6" firstAttribute="leading" secondItem="FAy-EY-Nh2" secondAttribute="leading" id="D1H-VV-pmd"/>
+                <constraint firstItem="FAy-EY-Nh2" firstAttribute="bottom" secondItem="LIW-Lq-WF6" secondAttribute="bottom" id="DBK-uX-nVr"/>
+                <constraint firstItem="FAy-EY-Nh2" firstAttribute="trailing" secondItem="LIW-Lq-WF6" secondAttribute="trailing" id="LqV-kg-8PA"/>
+                <constraint firstItem="LIW-Lq-WF6" firstAttribute="top" secondItem="FAy-EY-Nh2" secondAttribute="top" id="adT-0n-TLh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <viewLayoutGuide key="safeArea" id="FAy-EY-Nh2"/>
             <point key="canvasLocation" x="-186.5" y="49.5"/>
         </view>
     </objects>

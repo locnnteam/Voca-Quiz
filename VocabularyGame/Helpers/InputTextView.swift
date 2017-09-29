@@ -86,9 +86,11 @@ protocol InputTextDelegate {
         for _ in 0..<countButtons {
             // Create the button
             let button = UITextField()
+            button.autocorrectionType = .yes
+            button.autocorrectionType = .no
             button.inputView = keyboardView
             // Set the button images
-            button.font = UIFont(name: "Helvetica-Bold", size: FontSizeCustom.getLabelFontSize())
+            button.font = UIFont(name: "OpenSans-Bold", size: FontSizeCustom.getLabelFontSize())
             button.textColor = BackgroundColor.LessonLabelBackground
             button.tintColor = BackgroundColor.LessonLabelBackground
             //button.insertText(String(strings[index]))

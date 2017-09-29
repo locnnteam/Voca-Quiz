@@ -127,6 +127,27 @@ extension UIView {
                         self.alpha = 0.0
         }, completion: completion)
     }
+    
+    func addFitSubView(subView: UIView){
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            self.addSubview(subView)
+            
+            NSLayoutConstraint(item: subView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: subView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: subView, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: subView, attribute: .trailing, multiplier: 1.0, constant: 0.0).isActive = true
+    }
+    
+    func addCustomSubView(subView: UIView, topConstant: CGFloat, leadingConstant: CGFloat,
+                          bottomConstant: CGFloat, trailingConstant: CGFloat) {
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(subView)
+        
+        NSLayoutConstraint(item: subView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: topConstant).isActive = true
+        NSLayoutConstraint(item: subView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: leadingConstant).isActive = true
+        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: subView, attribute: .bottom, multiplier: 1.0, constant: bottomConstant).isActive = true
+        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: subView, attribute: .trailing, multiplier: 1.0, constant: trailingConstant).isActive = true
+    }
 }
 
 extension UITextField {

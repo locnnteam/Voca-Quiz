@@ -21,7 +21,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     var result = false
     var name: String?
     var keyName: String?
-    
+    var keyID: String!
     private var numsView = 0
     var numsFailed = 0 {
         didSet {
@@ -38,13 +38,16 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     @IBOutlet weak var inputTextView: InputTextView!
     @IBOutlet weak var passImageView: UIImageView!
     
-    private var showingBack: Bool!
-    @IBOutlet weak var definationView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    private var flipped: Bool = false {
+    @IBOutlet weak var flashCardView: UIView!
+    var coreData = CoreDataOperations()
+    
+    var imageView: UIImageView!
+    var definationView: FlashCardView!
+    
+    var showingBack: Bool = false {
         didSet {
-            imageView.isHidden = flipped
-            definationView.isHidden = !flipped
+            imageView.isHidden = showingBack
+            definationView.isHidden = !showingBack
         }
     }
 
@@ -56,7 +59,6 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
 
         // Do any additional setup after loading the view.
         self.lessonNavView.setup()
@@ -68,7 +70,6 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         self.audioPlayer = AudioPlayer()
         self.audioPlayer.delegate = self
         
-        nextView()
         //firebase analyst
         Analytics.logEvent("Open Typing quiz", parameters: [
             "name": "Open Typing quiz" as NSObject,
@@ -79,15 +80,38 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         notificationCenter.addObserver(self, selector: #selector(appMovedToActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         
-        //let singleTap = UITapGestureRecognizer(target: self, action: #selector(flip))
-        //addGestureRecognizer(singleTap)
+        //Flashcard
+        self.imageView = UIImageView()
+        self.imageView.contentMode = .scaleAspectFit
+        self.flashCardView.addCustomSubView(subView: self.imageView, topConstant: 40.0, leadingConstant: 40.0, bottomConstant: 40.0, trailingConstant: 40.0)
         
+        self.definationView = FlashCardView()
+        self.definationView.delegate = self
+        self.definationView.contentMode = .center
+        self.flashCardView.addFitSubView(subView: self.definationView)
+        
+        self.showingBack = false
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(flip))
+        singleTap.numberOfTapsRequired = 1
+        self.flashCardView.addGestureRecognizer(singleTap)
+        
+        nextView()
+        
+        guard let defination = self.listVocabulary[Int(self.keyID)!].defination else {
+            return
+        }
+        self.definationView.defination.text = defination
+        let isFavorites = coreData.iskExistObject(word: self.keyName!)
+        self.definationView.favoriteButton.isSelected = isFavorites
     }
     
     func flip() {
-//        let toView = self.showingBack ? self.imageView : self.definationView
-//        let fromView = self.showingBack ? self.definationView : self.imageView
-//        UIView.transition(from: fromView!, to: toView!, duration: 1, options: .transitionFlipFromRight, completion: nil)
+        let toView = self.showingBack ? self.imageView : self.definationView
+        let fromView = self.showingBack ? self.definationView : self.imageView
+        UIView.transition(from: fromView, to: toView, duration: 0.5, options: .transitionFlipFromRight, completion: nil)
+        toView.translatesAutoresizingMaskIntoConstraints = true
+        showingBack = !showingBack
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,9 +160,9 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         }
     }
  
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
     
     func loadListVocabulary(){
         self.listVocabularyKey = listVocabulary
@@ -157,7 +181,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         }
         
         let randomKey = Int(arc4random_uniform(UInt32(listVocabularyKey.count)))
-        
+        self.keyID = self.listVocabulary[randomKey].id!
         //setup view
         self.imageView.image = getImage(nameImage: listVocabularyKey[randomKey].name)
         
@@ -292,6 +316,23 @@ extension LessonTypingViewController: InputTextDelegate{
     
     func helpButtonTapped(){
         numsFailed += 1
+    }
+}
+
+extension LessonTypingViewController: FlashCardViewDelegate {
+    func audioDictPlay() {
+        self.replayAudio()
+    }
+    
+    func favoriteDictAdd() {
+        let lessonItem = listVocabulary[Int(self.keyID)!]
+        if self.definationView.favoriteButton.isSelected {
+            coreData.deleteRecords(lessonItem: lessonItem)
+            self.definationView.favoriteButton.isSelected = false
+        } else {
+            self.definationView.favoriteButton.isSelected = true
+            coreData.saveData(lessonItem: lessonItem)
+        }
     }
 }
 
