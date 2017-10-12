@@ -22,6 +22,7 @@
 		481D624C1F6D18CC00849CB1 /* LessonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 481D624B1F6D18CC00849CB1 /* LessonViewController.xib */; };
 		482144B11F8081E200AAD44D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482144AF1F8081E200AAD44D /* FavoritesTableViewCell.swift */; };
 		48284C331F52760F000F49D7 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48284C321F52760F000F49D7 /* UIImageViewExt.swift */; };
+		48378FB01F919BBC003289C8 /* DispatchQueueExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48378FAF1F919BBC003289C8 /* DispatchQueueExt.swift */; };
 		483BF7DC1F814BBE006A7789 /* CoreDataOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BF7DA1F814BBE006A7789 /* CoreDataOperations.swift */; };
 		483BF7DD1F814BBE006A7789 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BF7DB1F814BBE006A7789 /* Word.swift */; };
 		4843E5411F766BF00015D23F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4843E5401F766BF00015D23F /* TransitionManager.swift */; };
@@ -115,6 +116,7 @@
 		481D624B1F6D18CC00849CB1 /* LessonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonViewController.xib; sourceTree = "<group>"; };
 		482144AF1F8081E200AAD44D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		48284C321F52760F000F49D7 /* UIImageViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
+		48378FAF1F919BBC003289C8 /* DispatchQueueExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExt.swift; sourceTree = "<group>"; };
 		483BF7DA1F814BBE006A7789 /* CoreDataOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperations.swift; sourceTree = "<group>"; };
 		483BF7DB1F814BBE006A7789 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		4843E5401F766BF00015D23F /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				48939D901F6038BD00A401D3 /* Helper.swift */,
 				48F148CF1F847EE600F425C6 /* ArrayExt.swift */,
 				48EA53071F8CDB10003775A7 /* ActionButton.swift */,
+				48378FAF1F919BBC003289C8 /* DispatchQueueExt.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				48AD56F01F3BE7CA00ADBD6E /* InputTextView.swift in Sources */,
 				482144B11F8081E200AAD44D /* FavoritesTableViewCell.swift in Sources */,
 				480579241F64DB090053BB89 /* LoadingOverlay.swift in Sources */,
+				48378FB01F919BBC003289C8 /* DispatchQueueExt.swift in Sources */,
 				48AD572F1F3BE8E600ADBD6E /* LTMorphingLabel+Sparkle.swift in Sources */,
 				48AD57291F3BE8E600ADBD6E /* LTMorphingEffect.swift in Sources */,
 				483BF7DC1F814BBE006A7789 /* CoreDataOperations.swift in Sources */,

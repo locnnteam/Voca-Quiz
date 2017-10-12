@@ -46,7 +46,7 @@
                                 <action selector="favoritesButtonTapped:" destination="-1" eventType="touchUpInside" id="CfD-MT-ZeM"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-5T-3nO">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-5T-3nO">
                             <rect key="frame" x="303" y="8" width="25" height="25"/>
                             <state key="normal" title="Button" image="audioDict"/>
                             <connections>

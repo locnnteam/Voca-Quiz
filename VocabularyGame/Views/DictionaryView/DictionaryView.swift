@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import FaveButton
 
 protocol DictionaryViewDelegate {
     func audioDictPlay(audio: String?)
     func favoriteDictAdd(word: String?)
 }
 class DictionaryView: UIView {
+
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var audioButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!

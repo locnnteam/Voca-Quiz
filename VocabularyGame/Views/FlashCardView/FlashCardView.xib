@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHo-9i-aAr">
-                    <rect key="frame" x="44" y="324.5" width="287" height="20"/>
+                    <rect key="frame" x="44" y="324" width="287" height="20"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -37,24 +37,50 @@
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="34"/>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyR-6Z-C9v" customClass="ActionButton" customModule="VocabularyGame" customModuleProvider="target">
-                    <rect key="frame" x="339" y="28" width="20" height="20"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyR-6Z-C9v" customClass="FaveButton" customModule="FaveButton">
+                    <rect key="frame" x="329" y="23" width="30" height="30"/>
                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="06K-t6-2Cs">
-                            <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                        <constraint firstAttribute="height" constant="30" id="06K-t6-2Cs">
+                            <variation key="heightClass=regular-widthClass=regular" constant="45"/>
                         </constraint>
                         <constraint firstAttribute="width" secondItem="zyR-6Z-C9v" secondAttribute="height" multiplier="1:1" id="WyG-Pi-wxj"/>
                     </constraints>
-                    <state key="normal" title="Button" image="favoriteDict"/>
-                    <state key="selected" image="favortiesDictSelected"/>
+                    <color key="tintColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button" image="favortiesDictSelected"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                            <color key="value" red="1" green="0.66256638379999999" blue="0.92194761960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
+                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="dotSecondColor">
+                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="circleFromColor">
+                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="circleToColor">
+                            <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="favoriteButtonTapped:" destination="-1" eventType="touchUpInside" id="yYg-5V-IbJ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ra-1l-YFg" customClass="ActionButton" customModule="VocabularyGame" customModuleProvider="target">
-                    <rect key="frame" x="311" y="28" width="20" height="20"/>
+                    <rect key="frame" x="301" y="28" width="20" height="20"/>
                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="3Ra-1l-YFg" secondAttribute="height" multiplier="1:1" id="7bj-Ki-r2R"/>
+                        <constraint firstAttribute="height" constant="20" id="eSo-tZ-yeC">
+                            <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                        </constraint>
+                    </constraints>
                     <state key="normal" title="Button" image="audioDict"/>
                     <connections>
                         <action selector="audioButtonTapped:" destination="-1" eventType="touchUpInside" id="UUq-1K-9fj"/>
@@ -65,13 +91,11 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IHo-9i-aAr" secondAttribute="trailing" constant="44" id="5ta-dv-lri"/>
                 <constraint firstItem="IHo-9i-aAr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CWT-Fp-i4m"/>
-                <constraint firstItem="3Ra-1l-YFg" firstAttribute="width" secondItem="zyR-6Z-C9v" secondAttribute="width" id="EHC-nw-kzv"/>
                 <constraint firstItem="IHo-9i-aAr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GGM-cZ-f1f"/>
                 <constraint firstItem="3Ra-1l-YFg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="H0v-6c-pqp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zyR-6Z-C9v" secondAttribute="trailing" constant="16" id="IGY-nc-qiE"/>
                 <constraint firstItem="zyR-6Z-C9v" firstAttribute="leading" secondItem="3Ra-1l-YFg" secondAttribute="trailing" constant="8" id="Z4q-oc-PKt"/>
-                <constraint firstItem="zyR-6Z-C9v" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="mVi-1X-tWT"/>
-                <constraint firstItem="3Ra-1l-YFg" firstAttribute="height" secondItem="zyR-6Z-C9v" secondAttribute="height" id="uBO-qr-U5e"/>
+                <constraint firstItem="zyR-6Z-C9v" firstAttribute="centerY" secondItem="3Ra-1l-YFg" secondAttribute="centerY" id="i2N-tu-EEt"/>
                 <constraint firstItem="IHo-9i-aAr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="44" id="z8J-Il-3bW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -80,7 +104,6 @@
     </objects>
     <resources>
         <image name="audioDict" width="52" height="52"/>
-        <image name="favoriteDict" width="50" height="50"/>
         <image name="favortiesDictSelected" width="50" height="50"/>
     </resources>
 </document>

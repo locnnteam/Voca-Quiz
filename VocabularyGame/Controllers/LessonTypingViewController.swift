@@ -160,9 +160,13 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         }
     }
  
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
+    override var prefersStatusBarHidden: Bool {
+        if #available(iOS 11.0, *) { // check for iOS 11.0 and later
+            return false
+        } else {
+            return true
+        }
+    }
     
     func loadListVocabulary(){
         self.listVocabularyKey = listVocabulary
@@ -327,11 +331,9 @@ extension LessonTypingViewController: FlashCardViewDelegate {
     func favoriteDictAdd() {
         let lessonItem = listVocabulary[Int(self.keyID)!]
         if self.definationView.favoriteButton.isSelected {
-            coreData.deleteRecords(lessonItem: lessonItem)
-            self.definationView.favoriteButton.isSelected = false
-        } else {
-            self.definationView.favoriteButton.isSelected = true
             coreData.saveData(lessonItem: lessonItem)
+        } else {
+            coreData.deleteRecords(lessonItem: lessonItem)
         }
     }
 }

@@ -39,6 +39,10 @@ class FlashCardView: UIView {
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+ 
+        self.favoriteButton.setBackgroundColor(color: BackgroundColor.FlashCardBackground, forState: .selected)
+        self.favoriteButton.setBackgroundColor(color: BackgroundColor.FlashCardBackground, forState: .normal)
+        
         self.addSubview(view)
     }
 

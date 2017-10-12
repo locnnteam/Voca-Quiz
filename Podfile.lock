@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.5.1)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
+  - FaveButton (2.0.3)
   - Firebase/AdMob (4.3.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (= 7.24.1)
@@ -35,6 +36,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (~> 3.1)
+  - FaveButton (~> 2.0.3)
   - Firebase/AdMob
   - Firebase/Core
   - M13ProgressSuite
@@ -61,6 +63,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  FaveButton: cfcbc5e73da159c4f916613da5687357b5bb4783
   Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
   FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
@@ -74,6 +77,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyXMLParser: 42cf1c5de8bcdfa0218eb7f054b536635cb64b77
 
-PODFILE CHECKSUM: e94a880a4b58935ef43bc8eec6c43cac66a3eff6
+PODFILE CHECKSUM: 8f8117a6afd5a1c6738bac701594812c15f950b4
 
 COCOAPODS: 1.2.0

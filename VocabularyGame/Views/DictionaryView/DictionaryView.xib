@@ -74,11 +74,35 @@
                                 <action selector="audioButtonTapped:" destination="-1" eventType="touchUpInside" id="hB6-D2-VLk"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFi-p2-8PF" customClass="ActionButton" customModule="VocabularyGame" customModuleProvider="target">
-                            <rect key="frame" x="347" y="13" width="20" height="20"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="Button" image="favoriteDict"/>
-                            <state key="selected" image="favortiesDictSelected"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFi-p2-8PF" customClass="FaveButton" customModule="FaveButton">
+                            <rect key="frame" x="337" y="8" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="VFi-p2-8PF" secondAttribute="height" multiplier="1:1" id="MdY-OG-MR5"/>
+                                <constraint firstAttribute="height" constant="30" id="q3L-pt-HHb">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                </constraint>
+                            </constraints>
+                            <state key="normal" title="Button" image="favortiesDictSelected"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
+                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="dotSecondColor">
+                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="circleFromColor">
+                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="circleToColor">
+                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                                    <color key="value" red="1" green="0.66256638380633448" blue="0.92194761964368377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="favoriteButtonTapped:" destination="-1" eventType="touchUpInside" id="ooK-US-hiS"/>
                             </connections>
@@ -88,13 +112,11 @@
                     <constraints>
                         <constraint firstItem="dcR-Sy-GNG" firstAttribute="centerY" secondItem="yVF-ZY-4Pj" secondAttribute="centerY" id="1qO-lm-2Uv"/>
                         <constraint firstItem="ix6-NY-OsR" firstAttribute="centerY" secondItem="yVF-ZY-4Pj" secondAttribute="centerY" id="74y-Ky-NY6"/>
-                        <constraint firstItem="VFi-p2-8PF" firstAttribute="height" secondItem="dcR-Sy-GNG" secondAttribute="height" id="OWI-6X-0E0"/>
                         <constraint firstAttribute="height" constant="47" id="PLQ-EQ-2Rx"/>
                         <constraint firstItem="VFi-p2-8PF" firstAttribute="centerY" secondItem="yVF-ZY-4Pj" secondAttribute="centerY" id="Vqx-WR-CUo"/>
                         <constraint firstItem="ix6-NY-OsR" firstAttribute="leading" secondItem="LmT-dz-EoA" secondAttribute="trailing" constant="8" id="W3m-4g-5Ce"/>
                         <constraint firstItem="LmT-dz-EoA" firstAttribute="leading" secondItem="yVF-ZY-4Pj" secondAttribute="leading" constant="8" id="Zfl-hj-87p"/>
                         <constraint firstItem="LmT-dz-EoA" firstAttribute="centerY" secondItem="yVF-ZY-4Pj" secondAttribute="centerY" id="hWn-fW-fN9"/>
-                        <constraint firstItem="VFi-p2-8PF" firstAttribute="width" secondItem="dcR-Sy-GNG" secondAttribute="width" id="msY-a2-Awm"/>
                         <constraint firstItem="dcR-Sy-GNG" firstAttribute="leading" secondItem="ix6-NY-OsR" secondAttribute="trailing" constant="8" id="rXl-o4-fdf"/>
                         <constraint firstAttribute="trailing" secondItem="VFi-p2-8PF" secondAttribute="trailing" constant="8" id="zG5-2j-Kzo"/>
                     </constraints>
@@ -142,7 +164,6 @@
     </objects>
     <resources>
         <image name="audioDict" width="52" height="52"/>
-        <image name="favoriteDict" width="50" height="50"/>
         <image name="favortiesDictSelected" width="50" height="50"/>
     </resources>
 </document>

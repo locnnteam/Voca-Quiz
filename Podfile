@@ -13,4 +13,5 @@ pod 'M13ProgressSuite'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
+pod 'FaveButton', '~> 2.0.3'
 end

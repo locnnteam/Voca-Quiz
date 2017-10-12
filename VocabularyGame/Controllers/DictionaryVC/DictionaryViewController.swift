@@ -61,11 +61,9 @@ extension DictionaryViewController: DictionaryViewDelegate {
     
     func favoriteDictAdd(word: String?) {
         if self.dictionaryView.favoriteButton.isSelected {
-            CoreDataOperations().deleteRecords(lessonItem: self.lessonItem)
-            self.dictionaryView.favoriteButton.isSelected = false
-        } else {
-            self.dictionaryView.favoriteButton.isSelected = true
             CoreDataOperations().saveData(lessonItem: self.lessonItem)
+        } else {
+            CoreDataOperations().deleteRecords(lessonItem: self.lessonItem)
         }
     }
 }

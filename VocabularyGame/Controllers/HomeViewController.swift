@@ -182,7 +182,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let index = indexPath.row
         var level: Level!
+        let nextLevel: Level = index < (levels.count - 1) ? levels[index + 1] : levels[index]
         
         if indexPath.row == 0 {
             level = levels[indexPath.row]
@@ -209,7 +211,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if isMainView {
             self.lessonVC = LessonViewController()
             self.lessonVC?.delegate = self
-            self.lessonVC?.setup(maxfailed: 5, duration: level.levelTime, numImageFirstView: level.levelNumberRamdom, name: level.levelName, listVocabulary: level.listVocabulary)
+            self.lessonVC?.setup(maxfailed: 5, duration: level.levelTime, numImageFirstView: level.levelNumberRamdom, name: level.levelName, listVocabulary: level.listVocabulary, nextName: nextLevel.levelName, nextVocabularies: nextLevel.listVocabulary)
         } else {
             self.lessonTyping = LessonTypingViewController()
             self.lessonTyping?.setup(maxfailed: 5, duration: level.levelTime, name: level.levelName, listVocabulary: level.listVocabulary)
