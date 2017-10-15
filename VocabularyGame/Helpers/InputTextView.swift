@@ -114,6 +114,7 @@ protocol InputTextDelegate {
     }
     
     private func updateKeybox(index: Int?, ch: String?) {
+        currentIndex = index!
         if ch == "" {
             if textButtons[index!].text == "" {
                 if index! > 0 {
@@ -152,7 +153,6 @@ protocol InputTextDelegate {
     
     private func becomeEdditing(index: Int){
         textButtons[index].becomeFirstResponder()
-        currentIndex = index
     }
     
     private func suggestCharacters(words: String, num: Int){
@@ -226,6 +226,10 @@ protocol InputTextDelegate {
                 break
             }
         }
+    }
+    
+    func getCurrentTextField() -> UITextField {
+        return self.textButtons[currentIndex]
     }
 }
 

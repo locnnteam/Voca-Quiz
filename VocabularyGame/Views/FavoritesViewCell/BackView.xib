@@ -45,15 +45,19 @@
                                 <action selector="favoritesButtonTapped:" destination="-1" eventType="touchUpInside" id="0NE-um-YF8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-ZJ-V69">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbl-ZJ-V69" customClass="ActionButton" customModule="VocabularyGame" customModuleProvider="target">
                             <rect key="frame" x="303" y="8" width="25" height="25"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Button" image="audioDict"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="imageForHighlighted" value="audioDictSelected"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="audioButtonTapped:" destination="-1" eventType="touchUpInside" id="IXI-8w-DVF"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhK-4G-PPd">
-                            <rect key="frame" x="160.5" y="320.5" width="54" height="26"/>
+                            <rect key="frame" x="161" y="320.5" width="54" height="26"/>
                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -87,6 +91,7 @@
     </objects>
     <resources>
         <image name="audioDict" width="52" height="52"/>
+        <image name="audioDictSelected" width="52" height="52"/>
         <image name="favoriteDict" width="50" height="50"/>
         <image name="favortiesDictSelected" width="50" height="50"/>
     </resources>

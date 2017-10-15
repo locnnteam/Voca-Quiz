@@ -26,6 +26,7 @@
 		483BF7DC1F814BBE006A7789 /* CoreDataOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BF7DA1F814BBE006A7789 /* CoreDataOperations.swift */; };
 		483BF7DD1F814BBE006A7789 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BF7DB1F814BBE006A7789 /* Word.swift */; };
 		4843E5411F766BF00015D23F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4843E5401F766BF00015D23F /* TransitionManager.swift */; };
+		488084C81F9A0AC3003D881B /* MoveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488084C71F9A0AC3003D881B /* MoveAnimationView.swift */; };
 		488155B61F779992007D95DC /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488155B41F779992007D95DC /* DictionaryViewController.swift */; };
 		488155B71F779992007D95DC /* DictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488155B51F779992007D95DC /* DictionaryViewController.xib */; };
 		488F80851F7D581900231AF2 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F80841F7D581900231AF2 /* FlashCardView.swift */; };
@@ -82,6 +83,9 @@
 		48CC67241F831EE000971976 /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC67231F831EE000971976 /* BackView.swift */; };
 		48CC67261F831F0E00971976 /* FrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CC67251F831F0E00971976 /* FrontView.xib */; };
 		48CC67281F831F1F00971976 /* BackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CC67271F831F1F00971976 /* BackView.xib */; };
+		48CEED021F9AE69200017F02 /* RatingControlAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CEED011F9AE69200017F02 /* RatingControlAnim.swift */; };
+		48CEED041F9AFF5600017F02 /* WaterDropsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CEED031F9AFF5600017F02 /* WaterDropsView.swift */; };
+		48CEED061F9B160000017F02 /* UIBezierPathExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CEED051F9B160000017F02 /* UIBezierPathExt.swift */; };
 		48D1352D1F4315D7000D5826 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1352C1F4315D7000D5826 /* AudioPlayer.swift */; };
 		48D65A451F76016700AF82EC /* CustomInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D65A431F76016700AF82EC /* CustomInteractionController.swift */; };
 		48D65A461F76016700AF82EC /* CustomNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D65A441F76016700AF82EC /* CustomNavigationAnimationController.swift */; };
@@ -120,6 +124,7 @@
 		483BF7DA1F814BBE006A7789 /* CoreDataOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperations.swift; sourceTree = "<group>"; };
 		483BF7DB1F814BBE006A7789 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		4843E5401F766BF00015D23F /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		488084C71F9A0AC3003D881B /* MoveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationView.swift; sourceTree = "<group>"; };
 		488155B41F779992007D95DC /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DictionaryViewController.swift; path = VocabularyGame/Controllers/DictionaryVC/DictionaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		488155B51F779992007D95DC /* DictionaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DictionaryViewController.xib; path = VocabularyGame/Controllers/DictionaryVC/DictionaryViewController.xib; sourceTree = SOURCE_ROOT; };
 		488F80841F7D581900231AF2 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
@@ -180,6 +185,9 @@
 		48CC67231F831EE000971976 /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
 		48CC67251F831F0E00971976 /* FrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrontView.xib; sourceTree = "<group>"; };
 		48CC67271F831F1F00971976 /* BackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackView.xib; sourceTree = "<group>"; };
+		48CEED011F9AE69200017F02 /* RatingControlAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControlAnim.swift; sourceTree = "<group>"; };
+		48CEED031F9AFF5600017F02 /* WaterDropsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterDropsView.swift; sourceTree = "<group>"; };
+		48CEED051F9B160000017F02 /* UIBezierPathExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExt.swift; sourceTree = "<group>"; };
 		48D1352C1F4315D7000D5826 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		48D65A431F76016700AF82EC /* CustomInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInteractionController.swift; sourceTree = "<group>"; };
 		48D65A441F76016700AF82EC /* CustomNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationAnimationController.swift; sourceTree = "<group>"; };
@@ -288,6 +296,15 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
+		488084C61F9A0A6A003D881B /* AnimationView */ = {
+			isa = PBXGroup;
+			children = (
+				48CEED031F9AFF5600017F02 /* WaterDropsView.swift */,
+				488084C71F9A0AC3003D881B /* MoveAnimationView.swift */,
+			);
+			path = AnimationView;
+			sourceTree = "<group>";
+		};
 		488155B31F779890007D95DC /* DictionaryVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +408,7 @@
 				48AD56E81F3BE7CA00ADBD6E /* FadeImageView.swift */,
 				48AD56E91F3BE7CA00ADBD6E /* InputTextView.swift */,
 				48AD56EB1F3BE7CA00ADBD6E /* RatingControl.swift */,
+				48CEED011F9AE69200017F02 /* RatingControlAnim.swift */,
 				48AD56EC1F3BE7CA00ADBD6E /* UIButtonExt.swift */,
 				48AD56ED1F3BE7CA00ADBD6E /* UIViewExt.swift */,
 				48D1352C1F4315D7000D5826 /* AudioPlayer.swift */,
@@ -399,6 +417,7 @@
 				48F148CF1F847EE600F425C6 /* ArrayExt.swift */,
 				48EA53071F8CDB10003775A7 /* ActionButton.swift */,
 				48378FAF1F919BBC003289C8 /* DispatchQueueExt.swift */,
+				48CEED051F9B160000017F02 /* UIBezierPathExt.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -427,6 +446,7 @@
 		48AD56DA1F3BE68400ADBD6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				488084C61F9A0A6A003D881B /* AnimationView */,
 				482144AE1F8081B600AAD44D /* FavoritesViewCell */,
 				488F80831F7D580100231AF2 /* FlashCardView */,
 				48D65A421F76016700AF82EC /* InteractiveTransition */,
@@ -713,6 +733,7 @@
 				48AD56E61F3BE7BE00ADBD6E /* LessonViewController.swift in Sources */,
 				48AD56E21F3BE7BE00ADBD6E /* Lesson.swift in Sources */,
 				48AD572D1F3BE8E600ADBD6E /* LTMorphingLabel+Fall.swift in Sources */,
+				48CEED061F9B160000017F02 /* UIBezierPathExt.swift in Sources */,
 				48AD573D1F3BEC4300ADBD6E /* HomeViewController.swift in Sources */,
 				48AD57251F3BE8E600ADBD6E /* LTCharacterDiffResult.swift in Sources */,
 				48AD56EE1F3BE7CA00ADBD6E /* Constants.swift in Sources */,
@@ -727,8 +748,10 @@
 				488F808B1F7DD7AC00231AF2 /* FavoriteViewController.swift in Sources */,
 				480579251F64DB090053BB89 /* HeaderMainView.swift in Sources */,
 				480579231F64DB090053BB89 /* LoadingLaunchView.swift in Sources */,
+				48CEED041F9AFF5600017F02 /* WaterDropsView.swift in Sources */,
 				488F80851F7D581900231AF2 /* FlashCardView.swift in Sources */,
 				48CC67221F831ECB00971976 /* FrontView.swift in Sources */,
+				488084C81F9A0AC3003D881B /* MoveAnimationView.swift in Sources */,
 				48AD572C1F3BE8E600ADBD6E /* LTMorphingLabel+Evaporate.swift in Sources */,
 				48AD56F91F3BE7D500ADBD6E /* DownloadFile.swift in Sources */,
 				48AD56EF1F3BE7CA00ADBD6E /* FadeImageView.swift in Sources */,
@@ -739,6 +762,7 @@
 				48AD56F31F3BE7CA00ADBD6E /* UIButtonExt.swift in Sources */,
 				48AD57261F3BE8E600ADBD6E /* LTCharacterLimbo.swift in Sources */,
 				4843E5411F766BF00015D23F /* TransitionManager.swift in Sources */,
+				48CEED021F9AE69200017F02 /* RatingControlAnim.swift in Sources */,
 				48284C331F52760F000F49D7 /* UIImageViewExt.swift in Sources */,
 				48AD56F01F3BE7CA00ADBD6E /* InputTextView.swift in Sources */,
 				482144B11F8081E200AAD44D /* FavoritesTableViewCell.swift in Sources */,

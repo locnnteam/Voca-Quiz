@@ -28,7 +28,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHo-9i-aAr">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry =))" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHo-9i-aAr">
                     <rect key="frame" x="44" y="324" width="287" height="20"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                     <nil key="textColor"/>
@@ -82,6 +82,9 @@
                         </constraint>
                     </constraints>
                     <state key="normal" title="Button" image="audioDict"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="imageForHighlighted" value="audioDictSelected"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="audioButtonTapped:" destination="-1" eventType="touchUpInside" id="UUq-1K-9fj"/>
                     </connections>
@@ -104,6 +107,7 @@
     </objects>
     <resources>
         <image name="audioDict" width="52" height="52"/>
+        <image name="audioDictSelected" width="52" height="52"/>
         <image name="favortiesDictSelected" width="50" height="50"/>
     </resources>
 </document>

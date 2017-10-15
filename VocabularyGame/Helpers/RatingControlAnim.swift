@@ -1,27 +1,18 @@
 //
-//  RatingControl.swift
-//  FoodTracker
+//  RatingControlAnim.swift
+//  VocabularyGame
 //
-//  Created by Jane Appleseed on 11/2/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
+//  Created by Nguyen Nhat  Loc on 10/21/17.
+//  Copyright © 2017 bktech. All rights reserved.
 //
 
 import UIKit
+import FaveButton
 
-let wStar = 25
-let hStar = 25
-
-@IBDesignable class RatingControl: UIStackView {
-    
+@IBDesignable class RatingControlAnim: UIStackView {
     //MARK: Properties
-    var ratingButtons = [UIButton]()
-    var isNeedResize = false {
-        didSet{
-            setupButtons()
-        }
-    }
-    
-    var isIgnoreTapped:Bool = true
+    var ratingButtons: [FaveButton] = []
+    var isIgnoreTapped:Bool = false
     
     var rating = 0 {
         didSet {
@@ -29,12 +20,16 @@ let hStar = 25
         }
     }
     
+    func startAnim() {
+        updateButtonSelectionStates()
+    }
+    
     @IBInspectable var starSize: CGSize = CGSize(width: wStar, height: hStar) {
         didSet {
             setupButtons()
         }
     }
-
+    
     @IBInspectable var starCount: Int = 5 {
         didSet {
             setupButtons()
@@ -47,7 +42,7 @@ let hStar = 25
         super.init(frame: frame)
         setupButtons()
     }
-
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
         setupButtons()
@@ -63,7 +58,7 @@ let hStar = 25
         return ratingButtons[index].layer.position
     }
     
-    func ratingButtonTapped(button: UIButton) {
+    func ratingButtonTapped(button: FaveButton) {
         if isIgnoreTapped == false {
             guard let index = ratingButtons.index(of: button) else {
                 fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
@@ -78,14 +73,14 @@ let hStar = 25
             } else {
                 // Otherwise set the rating to the selected star
                 rating = selectedRating
-            } 
+            }
         }
     }
     
     
     //MARK: Private Methods
     
-    private func setupButtons() {
+    func setupButtons() {
         
         // Clear any existing buttons
         for button in ratingButtons {
@@ -95,24 +90,23 @@ let hStar = 25
         ratingButtons.removeAll()
         
         // Load Button Images
-        let bundle = Bundle(for: type(of: self))
-        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
-        let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
-
+        let filledStar = #imageLiteral(resourceName: "filledStar")
+        let emptyStar = #imageLiteral(resourceName: "emptyStar")
         
         for index in 0..<starCount {
             // Create the button
-            let button = UIButton()
-            
-            // Set the button images
-            button.setImage(emptyStar, for: .normal)
-            button.setImage(filledStar, for: .selected)
-            button.isUserInteractionEnabled = false
+            let button = FaveButton(
+                frame: CGRect(x:0, y:0, width: wStar + 5, height: hStar + 5),
+                faveIconNormal: #imageLiteral(resourceName: "filledStar")
+            )
+            button.normalColor = BackgroundColor.NavigationBackgound
+            button.selectedColor = .green
+            //faveButton.delegate = self
 
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//            button.heightAnchor.constraint(equalToConstant: CGFloat(size)).isActive = true
-//            button.widthAnchor.constraint(equalToConstant: CGFloat(size)).isActive = true
-            
+            // Set the button images
+            button.setImage(emptyStar, for: .selected)
+            button.setImage(filledStar, for: .normal)
+            button.isUserInteractionEnabled = false
             // Set the accessibility label
             button.accessibilityLabel = "Set \(index + 1) star rating"
             
@@ -126,7 +120,7 @@ let hStar = 25
             ratingButtons.append(button)
         }
         
-        updateButtonSelectionStates()
+//        updateButtonSelectionStates()
     }
     
     private func updateButtonSelectionStates() {
@@ -141,7 +135,7 @@ let hStar = 25
             } else {
                 hintString = nil
             }
-
+            
             let valueString: String
             switch (rating) {
             case 0:
@@ -157,3 +151,4 @@ let hStar = 25
         }
     }
 }
+

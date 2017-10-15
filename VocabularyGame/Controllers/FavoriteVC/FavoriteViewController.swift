@@ -38,8 +38,17 @@ class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource, FavoritesTableViewCellDelgate{
     func favoriteDictRemove(lessonItem: LessonItem) {
         CoreDataOperations().deleteRecords(lessonItem: lessonItem)
-        self.lessons = CoreDataOperations().fetchData()
-        self.tableView.reloadData()
+        var index = 0
+        for lesson in self.lessons {
+            if lesson.name == lessonItem.name {
+                break
+            }
+            index += 1
+        }
+
+        self.lessons.remove(at: index)
+        tableView.deleteRows(at: [NSIndexPath(item: index, section: 0) as IndexPath], with: .fade)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
