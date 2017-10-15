@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         return FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
     }()
     
+    lazy var settingsVC: SettingsViewController = {
+        return SettingsViewController(nibName: "SettingsViewController", bundle: nil)
+    }()
+    
     var adRootInterstitialVC: UIViewController!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -55,7 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
         
-        let controllers = [homeVC, homeTypingVC, favoritesVC] as [Any]
+        settingsVC.title = "Settings"
+        settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        
+        let controllers = [homeVC, homeTypingVC, favoritesVC, settingsVC] as [Any]
         tabbarController.viewControllers = controllers as? [UIViewController]
         tabbarController.viewControllers = controllers.map { UINavigationController(rootViewController: $0 as! UIViewController)}
         

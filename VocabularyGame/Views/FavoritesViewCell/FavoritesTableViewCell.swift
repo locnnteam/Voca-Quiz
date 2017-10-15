@@ -79,20 +79,22 @@ extension FavoritesTableViewCell: FrontViewDelegate, BackViewDelegate {
         if self.frontView.favoritesButton.isSelected {
             coreData.deleteRecords(lessonItem: lessonItem)
             self.frontView.favoritesButton.isSelected = false
-            delegate.favoriteDictRemove(lessonItem: lessonItem)
-        } else {
-            self.frontView.favoritesButton.isSelected = true
-            coreData.saveData(lessonItem: lessonItem)
-        }
-        
-        if self.backView.favoritesButton.isSelected {
-            coreData.deleteRecords(lessonItem: lessonItem)
             self.backView.favoritesButton.isSelected = false
             delegate.favoriteDictRemove(lessonItem: lessonItem)
         } else {
+            self.frontView.favoritesButton.isSelected = true
             self.backView.favoritesButton.isSelected = true
             coreData.saveData(lessonItem: lessonItem)
         }
+        
+//        if self.backView.favoritesButton.isSelected {
+//            coreData.deleteRecords(lessonItem: lessonItem)
+//            self.backView.favoritesButton.isSelected = false
+//            delegate.favoriteDictRemove(lessonItem: lessonItem)
+//        } else {
+//            self.backView.favoritesButton.isSelected = true
+//            coreData.saveData(lessonItem: lessonItem)
+//        }
     }
     
     func replayAudio() {

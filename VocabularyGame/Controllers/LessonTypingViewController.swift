@@ -11,6 +11,7 @@ import AVFoundation
 import SCLAlertView
 import AlamofireImage
 import FirebaseAnalytics
+import Spring
 
 class LessonTypingViewController: UIViewController, LessonViewCellDelegate, AudioPlayerDelegate {
     
@@ -23,10 +24,12 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     var keyName: String?
     var keyID: String!
     private var numsView = 0
+     let maxFailed = 5
+    
     var numsFailed = 0 {
         didSet {
-            lessonNavView.ratingControl.rating = 5 - numsFailed
-            if numsFailed == maxfailed + 1 {
+            lessonNavView.ratingControl.rating = maxFailed - numsFailed
+            if numsFailed == maxfailed{
                 self.backToHome(alertType: .OutOfHearts, showPopup: true)
             }
         }
@@ -36,7 +39,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     
     @IBOutlet weak var lessonNavView: LessonNavView!
     @IBOutlet weak var inputTextView: InputTextView!
-    @IBOutlet weak var passImageView: UIImageView!
+    @IBOutlet weak var passImageView: SpringImageView!
     
     @IBOutlet weak var flashCardView: UIView!
     var coreData = CoreDataOperations()
@@ -287,20 +290,24 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     }
 }
 
-extension LessonTypingViewController: InputTextDelegate{
+extension LessonTypingViewController: InputTextDelegate, MoveAnimationViewDelegate{
     // MARK: Delegate from Keyboard
     func inputTextCorrect(isCorrect: Bool) {
         passImageView.isHidden = false
         if isCorrect{
             result = true
             audioPlayer.playGameSounds(audio: Sound.passSounds!)
-            passImageView.image = #imageLiteral(resourceName: "passStick")
+            passImageView.image = #imageLiteral(resourceName: "typingPass")
+            passImageView.animation = "zoomIn"
+            passImageView.animate()
             //Reset data
             
         }else{
             result = false
             audioPlayer.playGameSounds(audio: Sound.failSounds!)
-            passImageView.image = #imageLiteral(resourceName: "failStick")
+            passImageView.image = #imageLiteral(resourceName: "typingFail")
+            passImageView.animation = "shake"
+            passImageView.animate()
         }
     }
     
@@ -319,7 +326,32 @@ extension LessonTypingViewController: InputTextDelegate{
     }
     
     func helpButtonTapped(){
+        let to = self.lessonNavView.ratingControl.getPositionStar(index: maxFailed - numsFailed - 1)
+        let toPoint = self.lessonNavView.ratingControl.convert(to, to: self.view)
+        
+        let fromItem = self.inputTextView.getCurrentTextField()
+        let from = CGPoint(x: fromItem.bounds.midX, y: fromItem.bounds.midY)
+        let fromPoint = fromItem.convert(from, to: self.view)
+        
+        // custom configuration
+        let animationView = MoveAnimationView {
+            $0.color = UIColor.red
+            $0.startPoint = fromPoint
+            $0.stopPoint = toPoint
+            $0.startAnimation()
+        }
+        
+        self.view.addSubview(animationView)
+        animationView.bindFrameToSuperviewBounds()
+        animationView.delegate = self
+    }
+    // MARK: MoveAnimationViewDelegate
+    func stopMoveAnimation() {
         numsFailed += 1
+        lessonNavView.ratingControl.rating = 5 - numsFailed
+        if numsFailed == maxFailed {
+            self.backToHome(alertType: .OutOfHearts, showPopup: true)
+        }
     }
 }
 

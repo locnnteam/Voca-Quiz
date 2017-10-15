@@ -1,32 +1,48 @@
 //
-//  RatingControl.swift
-//  FoodTracker
+//  RatingControlAnim.swift
+//  VocabularyGame
 //
-//  Created by Jane Appleseed on 11/2/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
+//  Created by Nguyen Nhat  Loc on 10/21/17.
+//  Copyright © 2017 bktech. All rights reserved.
 //
 
 import UIKit
+import FaveButton
 
-let wStar = 25
-let hStar = 25
-
-@IBDesignable class RatingControl: UIStackView {
+@IBDesignable class RatingControlAnim: UIStackView {
+    enum LevelStar: Int {
+        case High = 0
+        case Medium
+        case Low
+        case None
+    }
+    var star: Int = 5
     
     //MARK: Properties
-    var ratingButtons = [UIButton]()
-    var isNeedResize = false {
-        didSet{
-            setupButtons()
+    var ratingButtons: [FaveButton] = []
+    var isIgnoreTapped:Bool = false
+    
+    var rating: Int {
+        get {
+            return self.star
+        }
+        
+        set(newRating) {
+            self.star = newRating
+            var levelStar: LevelStar
+            if rating > 4 {
+                levelStar = .High
+            } else if rating > 2 {
+                levelStar = .Medium
+            } else {
+                levelStar = .Low
+            }
+            updateButtonSelectionStates(levelStar: levelStar)
         }
     }
     
-    var isIgnoreTapped:Bool = true
-    
-    var rating = 0 {
-        didSet {
-            updateButtonSelectionStates()
-        }
+    func startAnim() {
+        //updateButtonSelectionStates()
     }
     
     @IBInspectable var starSize: CGSize = CGSize(width: wStar, height: hStar) {
@@ -34,7 +50,7 @@ let hStar = 25
             setupButtons()
         }
     }
-
+    
     @IBInspectable var starCount: Int = 5 {
         didSet {
             setupButtons()
@@ -47,7 +63,7 @@ let hStar = 25
         super.init(frame: frame)
         setupButtons()
     }
-
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
         setupButtons()
@@ -63,7 +79,7 @@ let hStar = 25
         return ratingButtons[index].layer.position
     }
     
-    func ratingButtonTapped(button: UIButton) {
+    func ratingButtonTapped(button: FaveButton) {
         if isIgnoreTapped == false {
             guard let index = ratingButtons.index(of: button) else {
                 fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
@@ -78,15 +94,15 @@ let hStar = 25
             } else {
                 // Otherwise set the rating to the selected star
                 rating = selectedRating
-            } 
+            }
         }
     }
     
     
     //MARK: Private Methods
     
-    private func setupButtons() {
-        
+    func setupButtons() {
+        rating = 0
         // Clear any existing buttons
         for button in ratingButtons {
             removeArrangedSubview(button)
@@ -95,24 +111,24 @@ let hStar = 25
         ratingButtons.removeAll()
         
         // Load Button Images
-        let bundle = Bundle(for: type(of: self))
-        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
-        let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
-
+        let filledStar = #imageLiteral(resourceName: "filledStar")
+        let emptyStar = #imageLiteral(resourceName: "emptyStar")
         
         for index in 0..<starCount {
             // Create the button
-            let button = UIButton()
+            let button = FaveButton(
+                frame: CGRect(x:0, y:0, width: wStar + 10, height: hStar + 10),
+                faveIconNormal: #imageLiteral(resourceName: "filledStar")
+            )
             
-            // Set the button images
-            button.setImage(emptyStar, for: .normal)
-            button.setImage(filledStar, for: .selected)
-            button.isUserInteractionEnabled = false
+            button.normalColor = BackgroundColor.AnimStarHintBackground
+            button.selectedColor = .green
 
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//            button.heightAnchor.constraint(equalToConstant: CGFloat(size)).isActive = true
-//            button.widthAnchor.constraint(equalToConstant: CGFloat(size)).isActive = true
+            // Set the button images
+            button.setImage(filledStar, for: .selected)
+            button.setImage(emptyStar, for: .normal)
             
+            button.isUserInteractionEnabled = false
             // Set the accessibility label
             button.accessibilityLabel = "Set \(index + 1) star rating"
             
@@ -126,12 +142,28 @@ let hStar = 25
             ratingButtons.append(button)
         }
         
-        updateButtonSelectionStates()
+//        updateButtonSelectionStates()
     }
     
-    private func updateButtonSelectionStates() {
+    private func updateButtonSelectionStates(levelStar: LevelStar) {
         for (index, button) in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
+            //Todo: Config color star
+            switch levelStar {
+            case .High:
+                button.selectedColor = .green
+                break
+            case .Medium:
+                button.selectedColor = .yellow
+                break
+            case .Low:
+                button.selectedColor = .red
+                button.setImage(nil, for: .selected)
+                break
+            default:
+                fatalError("Not correct level star")
+            }
+
             button.isSelected = index < rating
             
             // Set accessibility hint and value
@@ -141,7 +173,7 @@ let hStar = 25
             } else {
                 hintString = nil
             }
-
+            
             let valueString: String
             switch (rating) {
             case 0:
@@ -157,3 +189,4 @@ let hStar = 25
         }
     }
 }
+

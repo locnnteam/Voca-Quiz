@@ -32,7 +32,7 @@ class FadeImageView: UIImageView
                 CATransaction.setAnimationDuration(self.fadeDuration)
                 
                 let transition = CATransition()
-                transition.type = kCATransitionPush
+                transition.type = kCATransitionFromLeft
                 
                 super.layer.add(transition, forKey: kCATransition)
                 super.image = img
@@ -68,7 +68,7 @@ class FadeLabel: UILabel
                 CATransaction.setAnimationDuration(self.fadeDuration)
                 
                 let transition = CATransition()
-                transition.type = kCATransitionPush
+                transition.type = kCATransitionFromLeft
                 
                 super.layer.add(transition, forKey: kCATransition)
                 super.text = text
