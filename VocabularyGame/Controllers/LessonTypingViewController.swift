@@ -11,6 +11,7 @@ import AVFoundation
 import SCLAlertView
 import AlamofireImage
 import FirebaseAnalytics
+import Spring
 
 class LessonTypingViewController: UIViewController, LessonViewCellDelegate, AudioPlayerDelegate {
     
@@ -36,7 +37,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     
     @IBOutlet weak var lessonNavView: LessonNavView!
     @IBOutlet weak var inputTextView: InputTextView!
-    @IBOutlet weak var passImageView: UIImageView!
+    @IBOutlet weak var passImageView: SpringImageView!
     
     @IBOutlet weak var flashCardView: UIView!
     var coreData = CoreDataOperations()
@@ -294,13 +295,17 @@ extension LessonTypingViewController: InputTextDelegate{
         if isCorrect{
             result = true
             audioPlayer.playGameSounds(audio: Sound.passSounds!)
-            passImageView.image = #imageLiteral(resourceName: "passStick")
+            passImageView.image = #imageLiteral(resourceName: "typingPass")
+            passImageView.animation = "zoomIn"
+            passImageView.animate()
             //Reset data
             
         }else{
             result = false
             audioPlayer.playGameSounds(audio: Sound.failSounds!)
-            passImageView.image = #imageLiteral(resourceName: "failStick")
+            passImageView.image = #imageLiteral(resourceName: "typingFail")
+            passImageView.animation = "shake"
+            passImageView.animate()
         }
     }
     

@@ -70,6 +70,9 @@
                                 <constraint firstAttribute="width" secondItem="dcR-Sy-GNG" secondAttribute="height" multiplier="1:1" id="RLF-ZD-Jt2"/>
                             </constraints>
                             <state key="normal" title="Button" image="audioDict"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="imageForHighlighted" value="audioDictSelected"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="audioButtonTapped:" destination="-1" eventType="touchUpInside" id="hB6-D2-VLk"/>
                             </connections>
@@ -164,6 +167,7 @@
     </objects>
     <resources>
         <image name="audioDict" width="52" height="52"/>
+        <image name="audioDictSelected" width="52" height="52"/>
         <image name="favortiesDictSelected" width="50" height="50"/>
     </resources>
 </document>

@@ -88,7 +88,6 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = BackgroundColor.LessonBackground
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
@@ -101,7 +100,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.labelView.layer.cornerRadius = keyLabel.layer.frame.size.height/2
         self.labelView.layer.borderWidth = 1.0
         self.labelView.layer.borderColor = UIColor(red: 211/255, green: 218/255, blue: 224/255, alpha: 1).cgColor
- 
+        
         colView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
         colView.register(UINib(nibName: "LessonViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
