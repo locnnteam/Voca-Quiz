@@ -22,7 +22,7 @@ protocol LessonViewControllerDelegate {
     func showTypingQuiz(levelName: String)
 }
 
-class LessonViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, LessonViewCellDelegate, AudioPlayerDelegate, DownloadFileDelegate {
+class LessonViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, LessonViewCellDelegate, AudioPlayerDelegate, DownloadFileDelegate, MoveAnimationViewDelegate {
     
     private var maxfailed = 0
     private var viewNumber = 0
@@ -31,13 +31,16 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     private var keyID: String!
     private var name: String?
     private var numImageFirst: Int = 2
-    
     private var numsView = 1
+    private var anim = true
+    
     private var numsFailed = 0 {
         didSet {
-            lessonNavView.ratingControl.rating = 5 - numsFailed
-            if numsFailed == maxfailed{
-                self.backToHome(alertType: .OutOfHearts, showPopup: true)
+            if self.anim {
+                lessonNavView.ratingControl.rating = 5 - numsFailed
+                if numsFailed == maxfailed{
+                    self.backToHome(alertType: .OutOfHearts, showPopup: true)
+                }
             }
         }
     }
@@ -88,7 +91,6 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = BackgroundColor.LessonBackground
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
@@ -101,7 +103,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.labelView.layer.cornerRadius = keyLabel.layer.frame.size.height/2
         self.labelView.layer.borderWidth = 1.0
         self.labelView.layer.borderColor = UIColor(red: 211/255, green: 218/255, blue: 224/255, alpha: 1).cgColor
- 
+        
         colView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
         colView.register(UINib(nibName: "LessonViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -201,6 +203,8 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
+    var waterDropView: UIView!
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if listVocabularyShow[indexPath.row]?.id == self.keyID {
             let cell = colView.cellForItem(at: indexPath) as! LessonViewCell
@@ -262,17 +266,46 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
             
         }else{
+            //animation image
+            self.anim = false
+            
             audioPlayer.playGameSounds(audio: Sound.failSounds!)
             
             let cell = colView.cellForItem(at: indexPath) as! LessonViewCell
             if cell.selectedView.isHidden == true{
                 numsFailed += 1
             }
+            
             cell.setSelectedView(bool: false)
+            
+            let to = self.lessonNavView.ratingControl.getPositionStar(index: maxfailed - numsFailed)
+            let toPoint = self.lessonNavView.ratingControl.convert(to, to: self.view)
+            
+            let from = CGPoint(x: cell.selectedView.frame.midX, y: cell.selectedView.frame.midY)
+            let fromPoint = cell.convert(from, to: self.view)
+            
+            // custom configuration
+            let animationView = MoveAnimationView {
+                $0.color = UIColor.red
+                $0.startPoint = fromPoint
+                $0.stopPoint = toPoint
+                $0.startAnimation()
+            }
+            
+            self.view.addSubview(animationView)
+            animationView.bindFrameToSuperviewBounds()
+            animationView.delegate = self
         }
-        
     }
-        
+    // MARK: MoveAnimationViewDelegate
+    func stopMoveAnimation() {
+        self.anim = true
+        lessonNavView.ratingControl.rating = 5 - numsFailed
+        if numsFailed == maxfailed{
+            self.backToHome(alertType: .OutOfHearts, showPopup: true)
+        }
+    }
+
     // MARK: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -402,8 +435,8 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.cleanUp()
         if showPopup{
             let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false,
-                showCircularIcon: false
+                showCloseButton: false
+                //showCircularIcon: false
             )
             if alertView != nil {
                 alertView?.hideView()
@@ -422,6 +455,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
             case .PassLesson:
                 alertView?.addButton("Done", action: {self.buttonDoneTapped()})
                 alertView?.showSuccess("Congratulation!", subTitle: "You are passed lesson \(self.name!)")
+                showCongratulationsAnim(superView: (self.alertView?.view)!)
             default:
                 print("No define alert type")
             }
@@ -435,6 +469,21 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
                     return
             }
         }
+    }
+    
+    func showCongratulationsAnim(superView: UIView) {
+        let hScreen = UIScreen.main.bounds.height
+        
+        let waterDropView = WaterDropsView {
+            $0.dropNum = 50
+            $0.maxDuration = 2
+            $0.minDuration = 2
+            $0.maxLength = hScreen
+            $0.startAnimation()
+        }
+        
+        superView.addSubview(waterDropView)
+        waterDropView.bindFrameToSuperviewBounds()
     }
     
     func buttonYesTapped() {

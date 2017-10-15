@@ -18,7 +18,7 @@ protocol LessonViewCellDelegate {
 class LessonNavView: UIView, CountdownLabelDelegate {
 
     @IBOutlet weak var homeButton: UIButton!
-    @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var ratingControl: RatingControlAnim!
     @IBOutlet weak var countDownLabel: CountdownLabel!
     @IBOutlet weak var progressBar: M13ProgressViewBorderedBar!
 
@@ -50,8 +50,8 @@ class LessonNavView: UIView, CountdownLabelDelegate {
         homeButton.layer.cornerRadius = 0.5 * homeButton.bounds.size.width
         homeButton.clipsToBounds = true
         
-        ratingControl.rating = 5
-        ratingControl.ignoreTapped(isIgnore: true)
+        self.ratingControl.setupButtons()
+        self.ratingControl.rating = 5
         
         countDownLabel.textColor = .white
         countDownLabel.baselineAdjustment = .alignCenters

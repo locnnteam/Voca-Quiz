@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,16 +41,34 @@
                                 <constraint firstAttribute="height" constant="30" id="WCo-sE-R3A"/>
                             </constraints>
                         </stackView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passStick" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-wb-vDQ">
-                            <rect key="frame" x="187" y="349" width="40" height="40"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passStick" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-wb-vDQ" customClass="SpringImageView" customModule="Spring">
+                            <rect key="frame" x="192" y="349" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="Xqd-w9-cR4"/>
-                                <constraint firstAttribute="height" constant="40" id="v4k-f9-AiM"/>
+                                <constraint firstAttribute="width" secondItem="Y9p-wb-vDQ" secondAttribute="height" multiplier="1:1" id="Ls3-LR-mq5"/>
+                                <constraint firstAttribute="width" constant="30" id="Xqd-w9-cR4">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                                </constraint>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="animation" value="shake"/>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-jP-tZ4">
                             <rect key="frame" x="16" y="8" width="382" height="287"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flip" translatesAutoresizingMaskIntoConstraints="NO" id="FsY-Fm-BIs">
+                                    <rect key="frame" x="171" y="257" width="40" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="d35-b2-iAA"/>
+                                        <constraint firstAttribute="height" constant="30" id="drH-eL-waR"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="FsY-Fm-BIs" firstAttribute="centerX" secondItem="RqF-jP-tZ4" secondAttribute="centerX" id="3qY-V5-zn8"/>
+                                <constraint firstAttribute="bottom" secondItem="FsY-Fm-BIs" secondAttribute="bottom" id="89d-0D-OEz"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,6 +100,7 @@
         </view>
     </objects>
     <resources>
+        <image name="flip" width="48" height="48"/>
         <image name="passStick" width="260" height="260"/>
     </resources>
 </document>

@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import AlamofireImage
 import FirebaseAnalytics
+import SCLAlertView
 
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, DownloadFileDelegate, HeaderMainViewDelegate, LessonViewControllerDelegate {
@@ -202,6 +203,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if starCount != 0 {
                 level = levels[indexPath.row]
             }else{
+                //Todo: Animation and show alert msg
+                let alertView = SCLAlertView()
+                alertView.showWarning("Not permission", subTitle: "Try again with low level")
                 return true
             }
             

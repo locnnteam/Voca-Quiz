@@ -33,6 +33,7 @@ enum BackgroundColor {
     static let BorderGrayColor = UIColor(red: 211/255, green: 218/255, blue: 224/255, alpha: 1)
     static let LessonLabelBackground = UIColor(red: 132/255, green: 59/255, blue: 41/255, alpha: 1)
     static let FlashCardBackground = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
+    static let AnimStarHintBackground = UIColor(red: 140/255, green: 255/255, blue: 179/255, alpha: 1)
 }
 
 class FontSizeCustom {
