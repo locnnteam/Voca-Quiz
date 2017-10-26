@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
+
 public class LoadingLaunchView{
-    
-    var overlayView = UIView()
+    var viewBg: UIView!
+    var overlayView: NVActivityIndicatorView!
     
     class var shared: LoadingLaunchView {
         struct Static {
@@ -20,23 +22,24 @@ public class LoadingLaunchView{
     }
     
     public func showOverlay(view: UIView!) {
-        overlayView = UIView(frame: UIScreen.main.bounds)
+        self.viewBg = UIView(frame: UIScreen.main.bounds)
+        self.viewBg.backgroundColor = BackgroundColor.LoadingLaunchBkg
+        view.addSubview(self.viewBg)
         
-        let title = UILabel()
-        title.text = "Vocabulary Game Start"
-        title.font = UIFont(name: "OpenSans", size: FontSizeCustom.getFontSize())
-        title.textAlignment = .center
-        title.sizeToFit()
-        title.textColor = .white
-        title.center = CGPoint(x: overlayView.frame.size.width/2, y: overlayView.frame.height/2 - 64.0)
-        overlayView.addSubview(title)
+        overlayView = NVActivityIndicatorView(frame: UIScreen.main.bounds, type: .lineScalePulseOut, color: .white, padding: 0)
+        let w = FontSizeCustom.getActivityIndicator()
+        overlayView.frame.size = CGSize(width: w, height: w)
+        overlayView.center =  CGPoint(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2 - 64.0)
         
-        overlayView.backgroundColor = BackgroundColor.NavigationBackgound
+        overlayView.backgroundColor = .clear
         view.addSubview(overlayView)
+        overlayView.startAnimating()
     }
     
     public func hideOverlayView() {
+        overlayView.stopAnimating()
         overlayView.removeFromSuperview()
+        self.viewBg.removeFromSuperview()
     }
 }
 

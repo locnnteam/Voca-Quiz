@@ -111,6 +111,8 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         colView.delegate   = self
         colView.dataSource = self
         
+        kAppDelegate.bannerAdView.updateBannerFrame(pos: .NoTabbar)
+        
         loadListVocabulary()
         self.audioPlayer = AudioPlayer()
         self.audioPlayer.delegate = self
@@ -132,6 +134,8 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        kAppDelegate.bannerAdView.isTabbarShow = false
+        
         self.navigationController?.navigationBar.isHidden = true
         if self.lessonNavView.countDownLabel.isPaused{
             lessonNavView.countDownLabel.start()
@@ -315,7 +319,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         let availableWidth = colView.frame.width - paddingSpaceWidth
         
         let paddingSpaceHeight = sectionInsets.top * (numOfSections + 1)
-        let availableHeight = colView.frame.height - paddingSpaceHeight
+        let availableHeight = colView.frame.height - FontSizeCustom.getHeightOfBanner() - paddingSpaceHeight
         
         let widthPerItem = availableWidth / numOfItemInSection
         let heightPerItem = availableHeight / numOfSections

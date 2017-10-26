@@ -13,11 +13,11 @@ import AlamofireImage
 import FirebaseAnalytics
 import SCLAlertView
 
-
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, DownloadFileDelegate, HeaderMainViewDelegate, LessonViewControllerDelegate {
     private let reuseIdentifier = "Cell"
-    private let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
+    private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
     private let itemsPerRow: CGFloat = 2
+    private var lastLessonsPassed: Int = 0
     
     private var levels: [Level] = []
     private var lessonVC: LessonViewController?
@@ -28,8 +28,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        kAppDelegate.bannerAdView.isTabbarShow = true
         
         UIApplication.shared.statusBarStyle = .lightContent
+        kAppDelegate.bannerAdView.updateBannerFrame(pos: .HaveTabbar)
         
         LoadingOverlay.shared.hideOverlayView()
         self.collectionView?.reloadData()
@@ -173,6 +175,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 let starCount = defaults.integer(forKey: userValue!)
                 if starCount != 0 {
+                    self.lastLessonsPassed = indexPath.row
                     cell?.ratingControll.rating = 0
                     cell?.lockView.isHidden = true
                 }
@@ -204,8 +207,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 level = levels[indexPath.row]
             }else{
                 //Todo: Animation and show alert msg
-                let alertView = SCLAlertView()
-                alertView.showWarning("Not permission", subTitle: "Try again with low level")
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCircularIcon: true
+                )
+                let alertView = SCLAlertView(appearance: appearance)
+                let alertViewIcon = #imageLiteral(resourceName: "lockLevel")
+                
+                let subTit = "Ohh, let play the \"\(self.levels[lastLessonsPassed].levelName!)\" first"
+                alertView.showInfo("Locked", subTitle: subTit, circleIconImage: alertViewIcon)
                 return true
             }
             
@@ -251,7 +260,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        return CGSize(width: widthPerItem, height: widthPerItem - 10.0)
     }
     
     //3

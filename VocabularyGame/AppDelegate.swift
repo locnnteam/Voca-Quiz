@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
     var window: UIWindow?
     var nav: UINavigationController?
     var tabbarController = UITabBarController()
+    var indexShowFullAds = 0
 
     var interstitialAd: GADInterstitial!
     
@@ -38,6 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         return SettingsViewController(nibName: "SettingsViewController", bundle: nil)
     }()
     
+    lazy var bannerAdView: BannerAdView = {
+        return BannerAdView()
+    }()
+    
     var adRootInterstitialVC: UIViewController!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -48,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         self.initAdmobPub()
         
         //TabarView
-        homeVC.title = "Picture Pickup"
+        homeVC.title = "Vocabulary Picture Quiz"
         homeVC.isMainView = true
         homeVC.tabBarItem = UITabBarItem(title: "Picture", image: #imageLiteral(resourceName: "picture_pickup"), selectedImage: #imageLiteral(resourceName: "picture_pickup_selected"))
 
@@ -85,6 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         UITabBar.appearance().tintColor = UIColor(red: 2.0/255, green: 166.0/255.0, blue: 250.0/255.0, alpha: 1.0)
         UITabBar.appearance().barTintColor = .white
         UITabBar.appearance().backgroundColor = BackgroundColor.HomeBackground
+        
+        self.setupBannerAdView()
         return true
     }
 
@@ -186,23 +193,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
     }
     
     func showInterstialAd(adRootVC: UIViewController){
-        if self.interstitialAd.isReady == true{
-            debugPrint("interstitialAd.isReady ")
-            self.adRootInterstitialVC = adRootVC
-            self.interstitialAd.present(fromRootViewController: adRootVC)
-            
-        }else{
-            debugPrint("[ERROR] interstitialAd.isReady fail")
-            //self.adRootInterstitialVC
-            //self.adRootInterstitialVC == LessonViewController
-            self.requestInterstitialAd()
+        self.indexShowFullAds += 1
+        if ((self.indexShowFullAds % 3) == 0) {
+            if self.interstitialAd.isReady == true{
+                debugPrint("interstitialAd.isReady ")
+                self.adRootInterstitialVC = adRootVC
+                self.interstitialAd.present(fromRootViewController: adRootVC)
+                
+            }else{
+                debugPrint("[ERROR] interstitialAd.isReady fail")
+                self.requestInterstitialAd()
+            }
         }
     }
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         self.interstitialAd = nil
         self.requestInterstitialAd()
-        
+    }
+    
+    func setupBannerAdView() {
+        self.window?.addSubview(self.bannerAdView)
+        self.bannerAdView.loadBannerAd(bannerAdSize: kGADAdSizeSmartBannerPortrait)
     }
 }
 

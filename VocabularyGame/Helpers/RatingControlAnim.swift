@@ -157,7 +157,6 @@ import FaveButton
                 break
             case .Low:
                 button.selectedColor = .red
-                button.setImage(nil, for: .selected)
                 break
             default:
                 fatalError("Not correct level star")

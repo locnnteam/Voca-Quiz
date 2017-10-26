@@ -91,6 +91,8 @@
 		48D65A461F76016700AF82EC /* CustomNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D65A441F76016700AF82EC /* CustomNavigationAnimationController.swift */; };
 		48DA1DF81F6ED01E004BE723 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA1DF71F6ED01E004BE723 /* DictionaryView.swift */; };
 		48DA1DFA1F6ED02D004BE723 /* DictionaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DA1DF91F6ED02D004BE723 /* DictionaryView.xib */; };
+		48EA2EA41FA4533E00B43B8F /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA2EA21FA4533E00B43B8F /* BannerAdView.swift */; };
+		48EA2EA51FA4533E00B43B8F /* BannerAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48EA2EA31FA4533E00B43B8F /* BannerAdView.xib */; };
 		48EA53081F8CDB10003775A7 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA53071F8CDB10003775A7 /* ActionButton.swift */; };
 		48EEBA341F8D1C980064247B /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48EEBA2E1F8D1C960064247B /* OpenSans-LightItalic.ttf */; };
 		48EEBA351F8D1C980064247B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48EEBA2F1F8D1C960064247B /* OpenSans-Bold.ttf */; };
@@ -198,6 +200,8 @@
 		48D65A441F76016700AF82EC /* CustomNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationAnimationController.swift; sourceTree = "<group>"; };
 		48DA1DF71F6ED01E004BE723 /* DictionaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryView.swift; path = DictionaryView/DictionaryView.swift; sourceTree = "<group>"; };
 		48DA1DF91F6ED02D004BE723 /* DictionaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DictionaryView.xib; path = DictionaryView/DictionaryView.xib; sourceTree = "<group>"; };
+		48EA2EA21FA4533E00B43B8F /* BannerAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		48EA2EA31FA4533E00B43B8F /* BannerAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerAdView.xib; sourceTree = "<group>"; };
 		48EA53071F8CDB10003775A7 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		48EEBA2E1F8D1C960064247B /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		48EEBA2F1F8D1C960064247B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 		48AD56DA1F3BE68400ADBD6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				48EA2EA11FA4533E00B43B8F /* BannerAdView */,
 				48F6BBA11FA0197100BFDB2C /* SettingsViewCell */,
 				488084C61F9A0A6A003D881B /* AnimationView */,
 				482144AE1F8081B600AAD44D /* FavoritesViewCell */,
@@ -571,6 +576,15 @@
 			name = DictionaryView;
 			sourceTree = "<group>";
 		};
+		48EA2EA11FA4533E00B43B8F /* BannerAdView */ = {
+			isa = PBXGroup;
+			children = (
+				48EA2EA21FA4533E00B43B8F /* BannerAdView.swift */,
+				48EA2EA31FA4533E00B43B8F /* BannerAdView.xib */,
+			);
+			path = BannerAdView;
+			sourceTree = "<group>";
+		};
 		48F6BB9C1FA015FD00BFDB2C /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +689,7 @@
 				480A80661F4484B3000AF97D /* false.mp3 in Resources */,
 				480579221F64DB090053BB89 /* LessonViewCell.xib in Resources */,
 				48AD57331F3BE8E600ADBD6E /* Fragment.png in Resources */,
+				48EA2EA51FA4533E00B43B8F /* BannerAdView.xib in Resources */,
 				48AD57241F3BE8E600ADBD6E /* Info.plist in Resources */,
 				48CC67281F831F1F00971976 /* BackView.xib in Resources */,
 				480579261F64DB090053BB89 /* HeaderMainView.xib in Resources */,
@@ -807,6 +822,7 @@
 				483BF7DC1F814BBE006A7789 /* CoreDataOperations.swift in Sources */,
 				48F6BB9F1FA0161A00BFDB2C /* SettingsViewController.swift in Sources */,
 				48AD57281F3BE8E600ADBD6E /* LTEmitterView.swift in Sources */,
+				48EA2EA41FA4533E00B43B8F /* BannerAdView.swift in Sources */,
 				48AD56E31F3BE7BE00ADBD6E /* LessonItem.swift in Sources */,
 				48AD56F81F3BE7D500ADBD6E /* AudioDownload.swift in Sources */,
 				48AD57271F3BE8E600ADBD6E /* LTEasing.swift in Sources */,

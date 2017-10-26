@@ -61,7 +61,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource, Fa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = UIScreen.main.bounds.height - 200.0
+        let height = UIScreen.main.bounds.height - 160.0
         return height
     }
 
