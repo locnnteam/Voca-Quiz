@@ -125,9 +125,8 @@ import FaveButton
             button.selectedColor = .green
 
             // Set the button images
-            button.setImage(filledStar, for: .selected)
-            button.setImage(emptyStar, for: .normal)
-            
+            button.setImage(emptyStar, for: .selected)
+            button.setImage(filledStar, for: .normal)
             button.isUserInteractionEnabled = false
             // Set the accessibility label
             button.accessibilityLabel = "Set \(index + 1) star rating"
