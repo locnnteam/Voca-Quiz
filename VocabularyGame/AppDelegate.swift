@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         
         self.initAdmobPub()
         
-        //TabarView
+        //TabarView 123
         homeVC.title = "Picture Pickup"
         homeVC.isMainView = true
         homeVC.tabBarItem = UITabBarItem(title: "Picture", image: #imageLiteral(resourceName: "picture_pickup"), selectedImage: #imageLiteral(resourceName: "picture_pickup_selected"))
