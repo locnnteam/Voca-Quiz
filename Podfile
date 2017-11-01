@@ -14,4 +14,8 @@ pod 'Firebase/Core'
 pod 'Firebase/AdMob'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 pod 'FaveButton', '~> 2.0.3'
+pod 'NVActivityIndicatorView'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
 end

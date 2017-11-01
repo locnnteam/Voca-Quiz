@@ -32,6 +32,8 @@ class DictionaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        kAppDelegate.bannerAdView.isTabbarShow = false
+        
         self.navigationController?.navigationBar.isHidden = true
         
         let isFavorites = CoreDataOperations().iskExistObject(word: self.lessonItem.name)

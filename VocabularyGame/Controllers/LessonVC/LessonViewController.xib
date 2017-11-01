@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,7 +47,7 @@
                             <rect key="frame" x="30" y="20" width="315" height="46"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVk-Lq-cZk" customClass="ActionButton" customModule="VocabularyGame" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="10.666666666666671" width="25" height="24.999999999999986"/>
+                                    <rect key="frame" x="10" y="10.666666666666671" width="25" height="25"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="kVk-Lq-cZk" secondAttribute="height" multiplier="1:1" id="MZu-yE-Kd7"/>
@@ -65,7 +65,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4d-rr-H2h" customClass="ActionButton" customModule="VocabularyGame" customModuleProvider="target">
-                                    <rect key="frame" x="280" y="10.666666666666671" width="25" height="24.999999999999986"/>
+                                    <rect key="frame" x="280" y="10.666666666666671" width="25" height="25"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="btnTranslate"/>
                                     <userDefinedRuntimeAttributes>
@@ -76,7 +76,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNV-Ed-UxM" customClass="FadeLabel" customModule="VocabularyGame" customModuleProvider="target">
-                                    <rect key="frame" x="45" y="7.3333333333333286" width="225" height="32.666666666666671"/>
+                                    <rect key="frame" x="45" y="7" width="225" height="32.666666666666664"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="28"/>
                                     <color key="textColor" red="0.51764705879999995" green="0.23137254900000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

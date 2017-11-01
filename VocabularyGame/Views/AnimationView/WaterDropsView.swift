@@ -235,6 +235,8 @@ open class WaterDropsView: UIView, CAAnimationDelegate {
         animationGroup?.animations = [dropAnimation, alphaAnimation]
         animationGroup?.duration = randomDuration
         animationGroup?.repeatCount = 1
+        animationGroup?.isRemovedOnCompletion = false
+        animationGroup?.fillMode = kCAFillModeForwards
         animationGroup?.delegate = self
         
         layer.add(animationGroup!, forKey: "animationGroup")

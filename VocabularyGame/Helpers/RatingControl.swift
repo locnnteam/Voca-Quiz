@@ -12,6 +12,13 @@ let wStar = 25
 let hStar = 25
 
 @IBDesignable class RatingControl: UIStackView {
+    enum LevelStar: Int {
+        case High = 0
+        case Medium
+        case Low
+        case None
+    }
+    var star: Int = 5
     
     //MARK: Properties
     var ratingButtons = [UIButton]()
@@ -23,9 +30,22 @@ let hStar = 25
     
     var isIgnoreTapped:Bool = true
     
-    var rating = 0 {
-        didSet {
-            updateButtonSelectionStates()
+    var rating: Int {
+        get {
+            return self.star
+        }
+        
+        set(newRating) {
+            self.star = newRating
+            var levelStar: LevelStar
+            if rating > 4 {
+                levelStar = .High
+            } else if rating > 2 {
+                levelStar = .Medium
+            } else {
+                levelStar = .Low
+            }
+            updateButtonSelectionStates(levelStar: levelStar)
         }
     }
     
@@ -108,10 +128,6 @@ let hStar = 25
             button.setImage(emptyStar, for: .normal)
             button.setImage(filledStar, for: .selected)
             button.isUserInteractionEnabled = false
-
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//            button.heightAnchor.constraint(equalToConstant: CGFloat(size)).isActive = true
-//            button.widthAnchor.constraint(equalToConstant: CGFloat(size)).isActive = true
             
             // Set the accessibility label
             button.accessibilityLabel = "Set \(index + 1) star rating"
@@ -126,12 +142,27 @@ let hStar = 25
             ratingButtons.append(button)
         }
         
-        updateButtonSelectionStates()
+//        updateButtonSelectionStates()
     }
     
-    private func updateButtonSelectionStates() {
+    private func updateButtonSelectionStates(levelStar: LevelStar) {
         for (index, button) in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
+            //Todo: Config color star
+            switch levelStar {
+            case .High:
+                button.setImage(#imageLiteral(resourceName: "filledStar"), for: .selected)
+                break
+            case .Medium:
+                button.setImage(#imageLiteral(resourceName: "yellowStar"), for: .selected)
+                break
+            case .Low:
+                button.setImage(#imageLiteral(resourceName: "redStar"), for: .selected)
+                break
+            default:
+                fatalError("Not correct level star")
+            }
+            
             button.isSelected = index < rating
             
             // Set accessibility hint and value

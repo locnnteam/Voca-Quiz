@@ -10,18 +10,39 @@ import UIKit
 import FaveButton
 
 @IBDesignable class RatingControlAnim: UIStackView {
+    enum LevelStar: Int {
+        case High = 0
+        case Medium
+        case Low
+        case None
+    }
+    var star: Int = 5
+    
     //MARK: Properties
     var ratingButtons: [FaveButton] = []
     var isIgnoreTapped:Bool = false
     
-    var rating = 0 {
-        didSet {
-            updateButtonSelectionStates()
+    var rating: Int {
+        get {
+            return self.star
+        }
+        
+        set(newRating) {
+            self.star = newRating
+            var levelStar: LevelStar
+            if rating > 4 {
+                levelStar = .High
+            } else if rating > 2 {
+                levelStar = .Medium
+            } else {
+                levelStar = .Low
+            }
+            updateButtonSelectionStates(levelStar: levelStar)
         }
     }
     
     func startAnim() {
-        updateButtonSelectionStates()
+        //updateButtonSelectionStates()
     }
     
     @IBInspectable var starSize: CGSize = CGSize(width: wStar, height: hStar) {
@@ -81,7 +102,7 @@ import FaveButton
     //MARK: Private Methods
     
     func setupButtons() {
-        
+        rating = 0
         // Clear any existing buttons
         for button in ratingButtons {
             removeArrangedSubview(button)
@@ -96,12 +117,12 @@ import FaveButton
         for index in 0..<starCount {
             // Create the button
             let button = FaveButton(
-                frame: CGRect(x:0, y:0, width: wStar + 5, height: hStar + 5),
+                frame: CGRect(x:0, y:0, width: wStar + 10, height: hStar + 10),
                 faveIconNormal: #imageLiteral(resourceName: "filledStar")
             )
-            button.normalColor = BackgroundColor.NavigationBackgound
+            
+            button.normalColor = BackgroundColor.AnimStarHintBackground
             button.selectedColor = .green
-            //faveButton.delegate = self
 
             // Set the button images
             button.setImage(emptyStar, for: .selected)
@@ -123,9 +144,24 @@ import FaveButton
 //        updateButtonSelectionStates()
     }
     
-    private func updateButtonSelectionStates() {
+    private func updateButtonSelectionStates(levelStar: LevelStar) {
         for (index, button) in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
+            //Todo: Config color star
+            switch levelStar {
+            case .High:
+                button.selectedColor = .green
+                break
+            case .Medium:
+                button.selectedColor = .yellow
+                break
+            case .Low:
+                button.selectedColor = .red
+                break
+            default:
+                fatalError("Not correct level star")
+            }
+
             button.isSelected = index < rating
             
             // Set accessibility hint and value

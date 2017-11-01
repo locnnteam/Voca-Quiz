@@ -242,7 +242,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             default:
                 print("No define alert type")
             }
-            
+            kAppDelegate.showInterstialAd(adRootVC: self)
         }else{
             guard (navigationController?.popViewController(animated:true)) != nil
                 else {

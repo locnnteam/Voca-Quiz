@@ -12,16 +12,9 @@ import UIKit
 class FadeImageView: UIImageView
 {
     @IBInspectable
-    var fadeDuration: Double = 0.08
+    var fadeDuration: Double = 0.1
     
     override var image: UIImage? {
-//        didSet{
-//            self.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-//            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: { () -> Void in
-//                self.transform = CGAffineTransform.identity
-//            }) { (animationCompleted: Bool) -> Void in}
-//        }
-    
         get {
             return super.image
         }
@@ -48,16 +41,7 @@ class FadeImageView: UIImageView
 class FadeLabel: UILabel
 {
     @IBInspectable
-    var fadeDuration: Double = 0.08
-    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+    var fadeDuration: Double = 0.1
     override var text: String?{
         get {
             return super.text
@@ -79,11 +63,5 @@ class FadeLabel: UILabel
                 super.text = nil
             }
         }
-//        didSet{
-//            self.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-//            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: { () -> Void in
-//                self.transform = CGAffineTransform.identity
-//            }) { (animationCompleted: Bool) -> Void in            }
-//        }
     }
 }
