@@ -91,6 +91,8 @@
 		48D65A461F76016700AF82EC /* CustomNavigationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D65A441F76016700AF82EC /* CustomNavigationAnimationController.swift */; };
 		48DA1DF81F6ED01E004BE723 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA1DF71F6ED01E004BE723 /* DictionaryView.swift */; };
 		48DA1DFA1F6ED02D004BE723 /* DictionaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DA1DF91F6ED02D004BE723 /* DictionaryView.xib */; };
+		48EA2EA41FA4533E00B43B8F /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA2EA21FA4533E00B43B8F /* BannerAdView.swift */; };
+		48EA2EA51FA4533E00B43B8F /* BannerAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48EA2EA31FA4533E00B43B8F /* BannerAdView.xib */; };
 		48EA53081F8CDB10003775A7 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA53071F8CDB10003775A7 /* ActionButton.swift */; };
 		48EEBA341F8D1C980064247B /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48EEBA2E1F8D1C960064247B /* OpenSans-LightItalic.ttf */; };
 		48EEBA351F8D1C980064247B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48EEBA2F1F8D1C960064247B /* OpenSans-Bold.ttf */; };
@@ -99,6 +101,11 @@
 		48EEBA381F8D1C980064247B /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48EEBA321F8D1C970064247B /* OpenSans-Semibold.ttf */; };
 		48EEBA391F8D1C980064247B /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48EEBA331F8D1C980064247B /* OpenSans-Light.ttf */; };
 		48F148D01F847EE600F425C6 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F148CF1F847EE600F425C6 /* ArrayExt.swift */; };
+		48F6BB9F1FA0161A00BFDB2C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6BB9D1FA0161A00BFDB2C /* SettingsViewController.swift */; };
+		48F6BBA01FA0161A00BFDB2C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F6BB9E1FA0161A00BFDB2C /* SettingsViewController.xib */; };
+		48F6BBA41FA0198C00BFDB2C /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6BBA21FA0198C00BFDB2C /* SettingsTableViewCell.swift */; };
+		48F6BBA51FA0198C00BFDB2C /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F6BBA31FA0198C00BFDB2C /* SettingsTableViewCell.xib */; };
+		48F6BBA71FA01DC000BFDB2C /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6BBA61FA01DC000BFDB2C /* SettingsItem.swift */; };
 		48FBBC4C1F63D7670066AC41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48FBBC4B1F63D7670066AC41 /* GoogleService-Info.plist */; };
 		FFDEA71D61F574E1468A7DFB /* Pods_VocabularyGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F883AC09DDCB7776F6E1D66 /* Pods_VocabularyGame.framework */; };
 /* End PBXBuildFile section */
@@ -193,6 +200,8 @@
 		48D65A441F76016700AF82EC /* CustomNavigationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationAnimationController.swift; sourceTree = "<group>"; };
 		48DA1DF71F6ED01E004BE723 /* DictionaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryView.swift; path = DictionaryView/DictionaryView.swift; sourceTree = "<group>"; };
 		48DA1DF91F6ED02D004BE723 /* DictionaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DictionaryView.xib; path = DictionaryView/DictionaryView.xib; sourceTree = "<group>"; };
+		48EA2EA21FA4533E00B43B8F /* BannerAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		48EA2EA31FA4533E00B43B8F /* BannerAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerAdView.xib; sourceTree = "<group>"; };
 		48EA53071F8CDB10003775A7 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		48EEBA2E1F8D1C960064247B /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		48EEBA2F1F8D1C960064247B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -201,6 +210,11 @@
 		48EEBA321F8D1C970064247B /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		48EEBA331F8D1C980064247B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		48F148CF1F847EE600F425C6 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
+		48F6BB9D1FA0161A00BFDB2C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		48F6BB9E1FA0161A00BFDB2C /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		48F6BBA21FA0198C00BFDB2C /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		48F6BBA31FA0198C00BFDB2C /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		48F6BBA61FA01DC000BFDB2C /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		48FBBC4B1F63D7670066AC41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F883AC09DDCB7776F6E1D66 /* Pods_VocabularyGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89810587BE1BF54EE50A68A0 /* Pods-VocabularyGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyGame/Pods-VocabularyGame.release.xcconfig"; sourceTree = "<group>"; };
@@ -387,6 +401,7 @@
 		48AD56D61F3BE68400ADBD6E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				48F6BB9C1FA015FD00BFDB2C /* SettingsVC */,
 				488F80881F7DD77300231AF2 /* FavoriteVC */,
 				488155B31F779890007D95DC /* DictionaryVC */,
 				48C25EDC1F5D583D00BD6119 /* HomeVC */,
@@ -432,6 +447,7 @@
 				48AD56F61F3BE7D500ADBD6E /* DownloadFile.swift */,
 				48AD56F71F3BE7D500ADBD6E /* ImageDownload.swift */,
 				48C25EDF1F5D58D900BD6119 /* LessonModel.swift */,
+				48F6BBA61FA01DC000BFDB2C /* SettingsItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,6 +462,8 @@
 		48AD56DA1F3BE68400ADBD6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				48EA2EA11FA4533E00B43B8F /* BannerAdView */,
+				48F6BBA11FA0197100BFDB2C /* SettingsViewCell */,
 				488084C61F9A0A6A003D881B /* AnimationView */,
 				482144AE1F8081B600AAD44D /* FavoritesViewCell */,
 				488F80831F7D580100231AF2 /* FlashCardView */,
@@ -558,6 +576,33 @@
 			name = DictionaryView;
 			sourceTree = "<group>";
 		};
+		48EA2EA11FA4533E00B43B8F /* BannerAdView */ = {
+			isa = PBXGroup;
+			children = (
+				48EA2EA21FA4533E00B43B8F /* BannerAdView.swift */,
+				48EA2EA31FA4533E00B43B8F /* BannerAdView.xib */,
+			);
+			path = BannerAdView;
+			sourceTree = "<group>";
+		};
+		48F6BB9C1FA015FD00BFDB2C /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				48F6BB9D1FA0161A00BFDB2C /* SettingsViewController.swift */,
+				48F6BB9E1FA0161A00BFDB2C /* SettingsViewController.xib */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		48F6BBA11FA0197100BFDB2C /* SettingsViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				48F6BBA21FA0198C00BFDB2C /* SettingsTableViewCell.swift */,
+				48F6BBA31FA0198C00BFDB2C /* SettingsTableViewCell.xib */,
+			);
+			path = SettingsViewCell;
+			sourceTree = "<group>";
+		};
 		59ACCF0BC580E69876F643F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +689,7 @@
 				480A80661F4484B3000AF97D /* false.mp3 in Resources */,
 				480579221F64DB090053BB89 /* LessonViewCell.xib in Resources */,
 				48AD57331F3BE8E600ADBD6E /* Fragment.png in Resources */,
+				48EA2EA51FA4533E00B43B8F /* BannerAdView.xib in Resources */,
 				48AD57241F3BE8E600ADBD6E /* Info.plist in Resources */,
 				48CC67281F831F1F00971976 /* BackView.xib in Resources */,
 				480579261F64DB090053BB89 /* HeaderMainView.xib in Resources */,
@@ -651,6 +697,8 @@
 				488F80871F7D582800231AF2 /* FlashCardView.xib in Resources */,
 				48EEBA371F8D1C980064247B /* OpenSans-Regular.ttf in Resources */,
 				480A806A1F4485A2000AF97D /* pass.mp3 in Resources */,
+				48F6BBA01FA0161A00BFDB2C /* SettingsViewController.xib in Resources */,
+				48F6BBA51FA0198C00BFDB2C /* SettingsTableViewCell.xib in Resources */,
 				48AD573A1F3BE93100ADBD6E /* KeyboardView.xib in Resources */,
 				48AD57351F3BE8E600ADBD6E /* Sparkle.png in Resources */,
 				48CC67261F831F0E00971976 /* FrontView.xib in Resources */,
@@ -738,6 +786,7 @@
 				48AD57251F3BE8E600ADBD6E /* LTCharacterDiffResult.swift in Sources */,
 				48AD56EE1F3BE7CA00ADBD6E /* Constants.swift in Sources */,
 				48DA1DF81F6ED01E004BE723 /* DictionaryView.swift in Sources */,
+				48F6BBA41FA0198C00BFDB2C /* SettingsTableViewCell.swift in Sources */,
 				48AD57391F3BE93100ADBD6E /* KeyboardView.swift in Sources */,
 				483BF7DD1F814BBE006A7789 /* Word.swift in Sources */,
 				48CC67241F831EE000971976 /* BackView.swift in Sources */,
@@ -771,7 +820,9 @@
 				48AD572F1F3BE8E600ADBD6E /* LTMorphingLabel+Sparkle.swift in Sources */,
 				48AD57291F3BE8E600ADBD6E /* LTMorphingEffect.swift in Sources */,
 				483BF7DC1F814BBE006A7789 /* CoreDataOperations.swift in Sources */,
+				48F6BB9F1FA0161A00BFDB2C /* SettingsViewController.swift in Sources */,
 				48AD57281F3BE8E600ADBD6E /* LTEmitterView.swift in Sources */,
+				48EA2EA41FA4533E00B43B8F /* BannerAdView.swift in Sources */,
 				48AD56E31F3BE7BE00ADBD6E /* LessonItem.swift in Sources */,
 				48AD56F81F3BE7D500ADBD6E /* AudioDownload.swift in Sources */,
 				48AD57271F3BE8E600ADBD6E /* LTEasing.swift in Sources */,
@@ -779,6 +830,7 @@
 				4805791F1F64DB090053BB89 /* HomeContentViewCell.swift in Sources */,
 				48AD57231F3BE8E600ADBD6E /* CountdownLabel.swift in Sources */,
 				48AD56C91F3BE60E00ADBD6E /* VocabularyGame.xcdatamodeld in Sources */,
+				48F6BBA71FA01DC000BFDB2C /* SettingsItem.swift in Sources */,
 				48AD56E41F3BE7BE00ADBD6E /* LessonTypingViewController.swift in Sources */,
 				48AD56F21F3BE7CA00ADBD6E /* RatingControl.swift in Sources */,
 				48D65A451F76016700AF82EC /* CustomInteractionController.swift in Sources */,

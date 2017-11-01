@@ -33,6 +33,7 @@ enum BackgroundColor {
     static let BorderGrayColor = UIColor(red: 211/255, green: 218/255, blue: 224/255, alpha: 1)
     static let LessonLabelBackground = UIColor(red: 132/255, green: 59/255, blue: 41/255, alpha: 1)
     static let FlashCardBackground = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
+    static let AnimStarHintBackground = UIColor(red: 1/255, green: 143/255, blue: 229/255, alpha: 0.7)
 }
 
 class FontSizeCustom {
@@ -57,6 +58,30 @@ class FontSizeCustom {
             return 28.0
         default:
             return 34.0
+        }
+    }
+    
+    static func getActivityIndicator() -> CGFloat {
+        let deviceIdiom = UIScreen.main.traitCollection.userInterfaceIdiom
+        switch (deviceIdiom) {
+        case .pad:
+            return 100.0
+        case .phone:
+            return 60.0
+        default:
+            return 60.0
+        }
+    }
+
+    static func getHeightOfBanner() -> CGFloat {
+        let deviceIdiom = UIScreen.main.traitCollection.userInterfaceIdiom
+        switch (deviceIdiom) {
+        case .pad:
+            return 90.0
+        case .phone:
+            return 50.0
+        default:
+            return 50.0
         }
     }
 }

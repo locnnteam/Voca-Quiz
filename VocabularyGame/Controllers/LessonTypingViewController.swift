@@ -100,13 +100,6 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         self.flashCardView.addGestureRecognizer(singleTap)
         
         nextView()
-        
-        guard let defination = self.listVocabulary[Int(self.keyID)!].defination else {
-            return
-        }
-        self.definationView.defination.text = defination
-        let isFavorites = coreData.iskExistObject(word: self.keyName!)
-        self.definationView.favoriteButton.isSelected = isFavorites
     }
     
     func flip() {
@@ -119,6 +112,8 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        kAppDelegate.bannerAdView.isTabbarShow = false
+        kAppDelegate.bannerAdView.updateBannerFrame(pos: .NoTabbar)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -192,6 +187,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         //setup view
         self.imageView.image = getImage(nameImage: listVocabularyKey[randomKey].name)
         
+        
         self.keyName =  listVocabularyKey[randomKey].name
         self.inputTextView.wordKey = keyName!
         let audioFileName = self.keyName!
@@ -210,6 +206,13 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
         var average: Float = 0
         average = (Float (viewNumber) / Float(listVocabulary.count))
         lessonNavView.progressBar.setProgress(CGFloat(average), animated: true)
+        
+        guard let defination = self.listVocabulary[Int(self.keyID)!].defination else {
+            return
+        }
+        self.definationView.defination.text = defination
+        let isFavorites = coreData.iskExistObject(word: self.keyName!)
+        self.definationView.favoriteButton.isSelected = isFavorites
     }
     
     // MARK: Controller view cycle
@@ -242,7 +245,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             default:
                 print("No define alert type")
             }
-            
+            kAppDelegate.showInterstialAd(adRootVC: self)
         }else{
             guard (navigationController?.popViewController(animated:true)) != nil
                 else {

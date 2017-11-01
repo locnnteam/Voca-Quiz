@@ -141,6 +141,8 @@ open class MoveAnimationView: UIView, CAAnimationDelegate {
         animationGroup?.repeatCount = 1
         animationGroup?.timingFunction = CAMediaTimingFunction(name:
             kCAMediaTimingFunctionEaseIn)
+        animationGroup?.isRemovedOnCompletion = false
+        animationGroup?.fillMode = kCAFillModeForwards
         
         animationGroup?.delegate = self
         layer.add(animationGroup!, forKey: "animationGroup")

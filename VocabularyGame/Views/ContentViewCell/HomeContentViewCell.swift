@@ -31,7 +31,7 @@ class HomeContentViewCell: UICollectionViewCell {
         lockView.isHidden = true
         editIcon.isHidden = true
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         DispatchQueue.main.async {
