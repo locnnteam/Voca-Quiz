@@ -178,7 +178,18 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             self.backToHome(alertType: .PassLesson, showPopup: true)
             let defaults = UserDefaults.standard
             let userValue = "typing_\(self.name!)"
-            defaults.set(maxfailed - numsFailed + 1, forKey: userValue)
+            let starCount = self.maxfailed - self.numsFailed + 1
+            
+            // Update score for user
+            score = defaults.integer(forKey: ScoreData)
+            let starCountSave = defaults.integer(forKey: userValue)
+            if starCountSave != 0 {
+                score -= starCountSave
+            }
+            
+            defaults.set(starCount, forKey: userValue)
+            defaults.set(score, forKey: ScoreData)
+            GCManager().addScoreAndSubmitToGC(score: score)
             return
         }
         

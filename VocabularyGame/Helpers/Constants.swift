@@ -16,9 +16,13 @@ enum FireBaseURL{
     static let jsonAdsIDURL = "https://firebasestorage.googleapis.com/v0/b/vocabularygame-b034c.appspot.com/o/Words%2FGGAdsID.json?alt=media&token=e5cdb797-64fd-4cc2-918b-55c51d6e6f7f"
 }
 
+let Leaderboad_Id = "grp.VocaQuiz"
+let ScoreData = "score"
+var score = 0
 let DocumentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
 let WidthBorderLessonCell = CGFloat(1.0)
+
 
 enum Sound {
     static let passSounds = Bundle.main.path(forResource: "pass", ofType: ".mp3")

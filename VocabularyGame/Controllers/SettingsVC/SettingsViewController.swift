@@ -9,13 +9,22 @@
 import UIKit
 import SCLAlertView
 import FacebookShare
+import GameKit
 
 class SettingsViewController: UIViewController {
     enum ItemLabel: String {
+        case score = "Your score"
+        case ranking = "Game ranking"
         case rate = "Rate us!"
         case fbShare = "Share on Facebook"
         case appVersion = "App version"
     }
+    
+    /* Variables */
+    var gcEnabled = Bool() // Check if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
+    var score = 0
+    var isAuthenticateLocal: Bool = false
     
     let AppID = "id1278800758"
     let AppURL = "https://itunes.apple.com/vn/app/voca-quiz/id1278800758?mt=8"
@@ -43,8 +52,18 @@ class SettingsViewController: UIViewController {
     }
     
     func loadSettingsItem() {
+        //Todo: Score
+        score = UserDefaults.standard.integer(forKey: ScoreData)
+        guard let score = SettingsItem(label: ItemLabel.score.rawValue, photo: nil) else {
+            fatalError("Unable to instantiate your score")
+        }
+        
+        guard let ranking = SettingsItem(label: ItemLabel.ranking.rawValue, photo: nil) else {
+            fatalError("Unable to instantiate ranking")
+        }
+        self.sections.updateValue([score, ranking], forKey: 0)
+        
         //Todo: Section social
-        var items: [SettingsItem] = []
         guard let rateUs = SettingsItem(label: ItemLabel.rate.rawValue, photo: #imageLiteral(resourceName: "rateApp")) else {
             fatalError("Unable to instantiate rateUs")
         }
@@ -53,17 +72,13 @@ class SettingsViewController: UIViewController {
             fatalError("Unable to instantiate shareFB")
         }
         
-        items += [rateUs, shareFB]
-        self.sections.updateValue(items, forKey: 0)
+        self.sections.updateValue([rateUs, shareFB], forKey: 1)
         
         //Todo: Section appversion
-        items.removeAll()
         guard let appVersion = SettingsItem(label: ItemLabel.appVersion.rawValue, photo: #imageLiteral(resourceName: "appInfo")) else {
             fatalError("Unable to instantiate appversion")
         }
-        items += [appVersion]
-        self.sections.updateValue(items, forKey: 1)
-        
+        self.sections.updateValue([appVersion], forKey: 2)
     }
     
     fileprivate func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
@@ -124,6 +139,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let label = items[indexPath.row].label
         
         switch label {
+        case ItemLabel.ranking.rawValue:
+            if self.isAuthenticateLocal {
+                self.checkGCLeaderboard()
+            } else {
+                self.authenticateLocalPlayer()
+            }
+            kAppDelegate.bannerAdView.isTabbarShow = false
+            kAppDelegate.bannerAdView.updateBannerFrame(pos: .NoTabbar)
+            break
+        case ItemLabel.score.rawValue:
+            let alertView = SCLAlertView()
+            alertView.showSuccess("Your score", subTitle: "\(score) points")
+            showCongratulationsAnim(superView: alertView.view)
+            break
         case ItemLabel.rate.rawValue:
             rateApp(appId: AppID){ success in
                 debugPrint("RateApp \(success)")
@@ -149,10 +178,76 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         case ItemLabel.appVersion.rawValue:
             let appversionAlert = SCLAlertView()
-            appversionAlert.showInfo("Voca Quiz", subTitle: "version 1.3")
+            appversionAlert.showInfo("Voca Quiz", subTitle: "Version 1.4")
             break
         default:
             fatalError("Not correct settings item")
+        }
+    }
+    
+    func showCongratulationsAnim(superView: UIView) {
+        let hScreen = UIScreen.main.bounds.height
+        
+        let waterDropView = WaterDropsView {
+            $0.dropNum = 100
+            $0.maxDuration = 1
+            $0.minDuration = 1
+            $0.maxLength = hScreen
+            $0.startAnimation()
+        }
+        
+        superView.addSubview(waterDropView)
+        waterDropView.bindFrameToSuperviewBounds()
+    }
+}
+
+extension SettingsViewController:  GKGameCenterControllerDelegate {
+    // Delegate to dismiss the GC controller
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+        
+        kAppDelegate.bannerAdView.isTabbarShow = true
+        kAppDelegate.bannerAdView.updateBannerFrame(pos: .HaveTabbar)
+    }
+    
+    // MARK: - OPEN GAME CENTER LEADERBOARD
+    func checkGCLeaderboard() {
+        let gcVC = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = .leaderboards
+        gcVC.leaderboardIdentifier = Leaderboad_Id
+        present(gcVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - AUTHENTICATE LOCAL PLAYER
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.present(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
+                    if error != nil {
+                        debugPrint(error!)
+                    } else {
+                        self.isAuthenticateLocal = true
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
+                        self.checkGCLeaderboard()
+                    }
+                    
+                })
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                debugPrint("Local player could not be authenticated!")
+                debugPrint(error!)
+            }
         }
     }
 }

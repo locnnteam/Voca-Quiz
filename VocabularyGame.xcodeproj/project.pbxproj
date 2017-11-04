@@ -26,6 +26,10 @@
 		483BF7DC1F814BBE006A7789 /* CoreDataOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BF7DA1F814BBE006A7789 /* CoreDataOperations.swift */; };
 		483BF7DD1F814BBE006A7789 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BF7DB1F814BBE006A7789 /* Word.swift */; };
 		4843E5411F766BF00015D23F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4843E5401F766BF00015D23F /* TransitionManager.swift */; };
+		484D02BA1FADED1000501993 /* GameCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D02B91FADED1000501993 /* GameCenterController.swift */; };
+		484D02BD1FAEAE8B00501993 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D02BC1FAEAE8B00501993 /* GameKit.framework */; };
+		484D02BF1FAEB9FC00501993 /* GCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D02BE1FAEB9FC00501993 /* GCManager.swift */; };
+		484D02C11FAECEE200501993 /* GameCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484D02C01FAECEE200501993 /* GameCenterController.xib */; };
 		488084C81F9A0AC3003D881B /* MoveAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488084C71F9A0AC3003D881B /* MoveAnimationView.swift */; };
 		488155B61F779992007D95DC /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488155B41F779992007D95DC /* DictionaryViewController.swift */; };
 		488155B71F779992007D95DC /* DictionaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488155B51F779992007D95DC /* DictionaryViewController.xib */; };
@@ -131,6 +135,10 @@
 		483BF7DA1F814BBE006A7789 /* CoreDataOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperations.swift; sourceTree = "<group>"; };
 		483BF7DB1F814BBE006A7789 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		4843E5401F766BF00015D23F /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		484D02B91FADED1000501993 /* GameCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterController.swift; sourceTree = "<group>"; };
+		484D02BC1FAEAE8B00501993 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		484D02BE1FAEB9FC00501993 /* GCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCManager.swift; sourceTree = "<group>"; };
+		484D02C01FAECEE200501993 /* GameCenterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCenterController.xib; sourceTree = "<group>"; };
 		488084C71F9A0AC3003D881B /* MoveAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAnimationView.swift; sourceTree = "<group>"; };
 		488155B41F779992007D95DC /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DictionaryViewController.swift; path = VocabularyGame/Controllers/DictionaryVC/DictionaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		488155B51F779992007D95DC /* DictionaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DictionaryViewController.xib; path = VocabularyGame/Controllers/DictionaryVC/DictionaryViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -226,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDEA71D61F574E1468A7DFB /* Pods_VocabularyGame.framework in Frameworks */,
+				484D02BD1FAEAE8B00501993 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +317,15 @@
 				4843E5401F766BF00015D23F /* TransitionManager.swift */,
 			);
 			path = Transition;
+			sourceTree = "<group>";
+		};
+		484D02BB1FADEE1C00501993 /* GameCenterVC */ = {
+			isa = PBXGroup;
+			children = (
+				484D02B91FADED1000501993 /* GameCenterController.swift */,
+				484D02C01FAECEE200501993 /* GameCenterController.xib */,
+			);
+			path = GameCenterVC;
 			sourceTree = "<group>";
 		};
 		488084C61F9A0A6A003D881B /* AnimationView */ = {
@@ -401,6 +419,7 @@
 		48AD56D61F3BE68400ADBD6E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				484D02BB1FADEE1C00501993 /* GameCenterVC */,
 				48F6BB9C1FA015FD00BFDB2C /* SettingsVC */,
 				488F80881F7DD77300231AF2 /* FavoriteVC */,
 				488155B31F779890007D95DC /* DictionaryVC */,
@@ -448,6 +467,7 @@
 				48AD56F71F3BE7D500ADBD6E /* ImageDownload.swift */,
 				48C25EDF1F5D58D900BD6119 /* LessonModel.swift */,
 				48F6BBA61FA01DC000BFDB2C /* SettingsItem.swift */,
+				484D02BE1FAEB9FC00501993 /* GCManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -606,6 +626,7 @@
 		59ACCF0BC580E69876F643F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				484D02BC1FAEAE8B00501993 /* GameKit.framework */,
 				5F883AC09DDCB7776F6E1D66 /* Pods_VocabularyGame.framework */,
 			);
 			name = Frameworks;
@@ -657,6 +678,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 52NT8RT93V;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -691,6 +717,7 @@
 				48AD57331F3BE8E600ADBD6E /* Fragment.png in Resources */,
 				48EA2EA51FA4533E00B43B8F /* BannerAdView.xib in Resources */,
 				48AD57241F3BE8E600ADBD6E /* Info.plist in Resources */,
+				484D02C11FAECEE200501993 /* GameCenterController.xib in Resources */,
 				48CC67281F831F1F00971976 /* BackView.xib in Resources */,
 				480579261F64DB090053BB89 /* HeaderMainView.xib in Resources */,
 				48EEBA381F8D1C980064247B /* OpenSans-Semibold.ttf in Resources */,
@@ -814,6 +841,7 @@
 				48CEED021F9AE69200017F02 /* RatingControlAnim.swift in Sources */,
 				48284C331F52760F000F49D7 /* UIImageViewExt.swift in Sources */,
 				48AD56F01F3BE7CA00ADBD6E /* InputTextView.swift in Sources */,
+				484D02BA1FADED1000501993 /* GameCenterController.swift in Sources */,
 				482144B11F8081E200AAD44D /* FavoritesTableViewCell.swift in Sources */,
 				480579241F64DB090053BB89 /* LoadingOverlay.swift in Sources */,
 				48378FB01F919BBC003289C8 /* DispatchQueueExt.swift in Sources */,
@@ -835,6 +863,7 @@
 				48AD56F21F3BE7CA00ADBD6E /* RatingControl.swift in Sources */,
 				48D65A451F76016700AF82EC /* CustomInteractionController.swift in Sources */,
 				48AD572B1F3BE8E600ADBD6E /* LTMorphingLabel+Burn.swift in Sources */,
+				484D02BF1FAEB9FC00501993 /* GCManager.swift in Sources */,
 				48AD56F41F3BE7CA00ADBD6E /* UIViewExt.swift in Sources */,
 				48F148D01F847EE600F425C6 /* ArrayExt.swift in Sources */,
 				48AD56C11F3BE60E00ADBD6E /* AppDelegate.swift in Sources */,
