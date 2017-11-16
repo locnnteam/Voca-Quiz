@@ -225,6 +225,7 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
                     // Update score for user
                     score = defaults.integer(forKey: ScoreData)
                     let starCountSave = defaults.integer(forKey: userValue)
+
                     if (starCountSave != 0) && (score > starCountSave) {
                         score -= starCountSave
                         score += starCount
