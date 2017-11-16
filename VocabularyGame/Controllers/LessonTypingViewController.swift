@@ -12,6 +12,7 @@ import SCLAlertView
 import AlamofireImage
 import FirebaseAnalytics
 import Spring
+import SAConfettiView
 
 class LessonTypingViewController: UIViewController, LessonViewCellDelegate, AudioPlayerDelegate {
     
@@ -178,7 +179,21 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             self.backToHome(alertType: .PassLesson, showPopup: true)
             let defaults = UserDefaults.standard
             let userValue = "typing_\(self.name!)"
-            defaults.set(maxfailed - numsFailed + 1, forKey: userValue)
+            let starCount = self.maxfailed - self.numsFailed + 1
+            
+            // Update score for user
+            score = defaults.integer(forKey: ScoreData)
+            let starCountSave = defaults.integer(forKey: userValue)
+            if (starCountSave != 0) && (score > starCountSave) {
+                score -= starCountSave
+                score += starCount
+            } else if (starCountSave == 0) {
+                score += starCount
+            }
+            
+            defaults.set(starCount, forKey: userValue)
+            defaults.set(score, forKey: ScoreData)
+            GCManager().addScoreAndSubmitToGC(score: score)
             return
         }
         
@@ -242,6 +257,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             case .PassLesson:
                 alertView?.addButton("Done", action: {self.buttonDoneTapped()})
                 alertView?.showSuccess("Congratulation!", subTitle: "You are passed lesson \(self.name!)")
+                showCongratulationsAnim(superView: (self.alertView?.view)!)
             default:
                 print("No define alert type")
             }
@@ -252,6 +268,19 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
                     dismiss(animated: true, completion: nil)
                     return
             }
+        }
+    }
+    
+    func showCongratulationsAnim(superView: UIView) {
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        superView.addSubview(confettiView)
+        confettiView.bindFrameToSuperviewBounds()
+        confettiView.intensity = 0.75
+        confettiView.type = .Diamond
+        confettiView.startConfetti()
+        Helper.perfomDelay(time: 1.2) {
+            confettiView.stopConfetti()
+            confettiView.removeFromSuperview()
         }
     }
     

@@ -92,9 +92,17 @@ class BannerAdView: UIView, GADBannerViewDelegate {
             
         case .NoTabbar:
             bannerHeight = FontSizeCustom.getHeightOfBanner()
+            if #available(iOS 11.0, *) {
+                let bottomSafeInsets = self.superview?.safeAreaInsets.bottom
+                posY = posY - bottomSafeInsets!
+            }
             posY = posY - bannerHeight
         case .NoAds:
             bannerHeight = 0
+            if #available(iOS 11.0, *) {
+                let bottomSafeInsets = self.superview?.safeAreaInsets.bottom
+                posY = posY - bottomSafeInsets!
+            }
             posY = posY - bannerHeight
         }
         

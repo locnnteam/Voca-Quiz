@@ -29,9 +29,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         kAppDelegate.bannerAdView.isTabbarShow = true
+        kAppDelegate.bannerAdView.updateBannerFrame(pos: .HaveTabbar)
         
         UIApplication.shared.statusBarStyle = .lightContent
-        kAppDelegate.bannerAdView.updateBannerFrame(pos: .HaveTabbar)
         
         LoadingOverlay.shared.hideOverlayView()
         self.collectionView?.reloadData()
