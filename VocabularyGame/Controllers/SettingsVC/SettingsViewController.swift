@@ -19,16 +19,9 @@ class SettingsViewController: UIViewController {
         case fbShare = "Share on Facebook"
         case appVersion = "App version"
     }
-    
-<<<<<<< HEAD
+
     var gcEnabled = Bool()
     var gcDefaultLeaderBoard = String()
-=======
-    /* Variables */
-    var gcEnabled = Bool() // Check if the user has Game Center enabled
-    var gcDefaultLeaderBoard = String() // Check the default leaderboardID
-    var score = 0
->>>>>>> 16988760ae68f9ad50819178b85c8bb975ffbbff
     var isAuthenticateLocal: Bool = false
     
     let AppID = "id1278800758"
@@ -145,7 +138,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch label {
         case ItemLabel.ranking.rawValue:
-<<<<<<< HEAD
             if score == 0 {
                 score = UserDefaults.standard.integer(forKey: ScoreData)
             }
@@ -155,11 +147,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.checkGCLeaderboard()
             } else {
                 LoadingLaunchView.shared.showOverlay(view: self.view)
-=======
-            if self.isAuthenticateLocal {
-                self.checkGCLeaderboard()
-            } else {
->>>>>>> 16988760ae68f9ad50819178b85c8bb975ffbbff
                 self.authenticateLocalPlayer()
             }
             kAppDelegate.bannerAdView.isTabbarShow = false
@@ -167,16 +154,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         case ItemLabel.score.rawValue:
             let alertView = SCLAlertView()
-<<<<<<< HEAD
             if score == 0 {
                 score = UserDefaults.standard.integer(forKey: ScoreData)
             }
             alertView.showSuccess("Your score", subTitle: "\(score) points")
 //            showCongratulationsAnim(superView: alertView.view)
-=======
-            alertView.showSuccess("Your score", subTitle: "\(score) points")
-            showCongratulationsAnim(superView: alertView.view)
->>>>>>> 16988760ae68f9ad50819178b85c8bb975ffbbff
             break
         case ItemLabel.rate.rawValue:
             rateApp(appId: AppID){ success in
@@ -224,60 +206,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         superView.addSubview(waterDropView)
         waterDropView.bindFrameToSuperviewBounds()
     }
-<<<<<<< HEAD
-=======
-}
-
-extension SettingsViewController:  GKGameCenterControllerDelegate {
-    // Delegate to dismiss the GC controller
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
-        
-        kAppDelegate.bannerAdView.isTabbarShow = true
-        kAppDelegate.bannerAdView.updateBannerFrame(pos: .HaveTabbar)
-    }
-    
-    // MARK: - OPEN GAME CENTER LEADERBOARD
-    func checkGCLeaderboard() {
-        let gcVC = GKGameCenterViewController()
-        gcVC.gameCenterDelegate = self
-        gcVC.viewState = .leaderboards
-        gcVC.leaderboardIdentifier = Leaderboad_Id
-        present(gcVC, animated: true, completion: nil)
-    }
-    
-    // MARK: - AUTHENTICATE LOCAL PLAYER
-    func authenticateLocalPlayer() {
-        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
-        
-        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
-            if((ViewController) != nil) {
-                // 1 Show login if player is not logged in
-                self.present(ViewController!, animated: true, completion: nil)
-            } else if (localPlayer.isAuthenticated) {
-                // 2 Player is already euthenticated & logged in, load game center
-                self.gcEnabled = true
-                
-                // Get the default leaderboard ID
-                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
-                    if error != nil {
-                        debugPrint(error!)
-                    } else {
-                        self.isAuthenticateLocal = true
-                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
-                        self.checkGCLeaderboard()
-                    }
-                    
-                })
-            } else {
-                // 3 Game center is not enabled on the users device
-                self.gcEnabled = false
-                debugPrint("Local player could not be authenticated!")
-                debugPrint(error!)
-            }
-        }
-    }
->>>>>>> 16988760ae68f9ad50819178b85c8bb975ffbbff
 }
 
 extension SettingsViewController:  GKGameCenterControllerDelegate {
