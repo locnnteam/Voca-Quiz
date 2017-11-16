@@ -40,6 +40,14 @@ class DictionaryViewController: UIViewController {
         self.dictionaryView.favoriteButton.isSelected = isFavorites
     }
 
+    override var prefersStatusBarHidden: Bool {
+        if #available(iOS 11.0, *) { // check for iOS 11.0 and later
+            return false
+        } else {
+            return true
+        }
+    }
+    
     // MARK: - Navigation
     @IBAction func backButtonTapped(_ sender: Any) {
         guard (navigationController?.popViewController(animated:true)) != nil
