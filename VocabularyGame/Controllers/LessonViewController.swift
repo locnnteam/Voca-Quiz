@@ -10,6 +10,7 @@ import UIKit
 import SCLAlertView
 import AlamofireImage
 import FirebaseAnalytics
+import SAConfettiView
 
 enum AlertPopupType: Int {
     case TimeLimit = 0
@@ -229,6 +230,8 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
                     if (starCountSave != 0) && (score > starCountSave) {
                         score -= starCountSave
                         score += starCount
+                    } else if (starCountSave == 0) {
+                        score += starCount
                     }
                     
                     defaults.set(starCount, forKey: userValue)
@@ -330,7 +333,14 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
         let availableWidth = colView.frame.width - paddingSpaceWidth
         
         let paddingSpaceHeight = sectionInsets.top * (numOfSections + 1)
-        let availableHeight = colView.frame.height - FontSizeCustom.getHeightOfBanner() - paddingSpaceHeight
+        //var availableHeight = colView.frame.height - FontSizeCustom.getHeightOfBanner() - paddingSpaceHeight
+        
+        var availableHeight: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            availableHeight = self.colView.safeAreaLayoutGuide.layoutFrame.height - FontSizeCustom.getHeightOfBanner() - paddingSpaceHeight
+        } else {
+            availableHeight = self.colView.frame.height - FontSizeCustom.getHeightOfBanner() - paddingSpaceHeight
+        }
         
         let widthPerItem = availableWidth / numOfItemInSection
         let heightPerItem = availableHeight / numOfSections
@@ -487,18 +497,16 @@ class LessonViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func showCongratulationsAnim(superView: UIView) {
-        let hScreen = UIScreen.main.bounds.height
-        
-        let waterDropView = WaterDropsView {
-            $0.dropNum = 50
-            $0.maxDuration = 2
-            $0.minDuration = 2
-            $0.maxLength = hScreen
-            $0.startAnimation()
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        superView.addSubview(confettiView)
+        confettiView.bindFrameToSuperviewBounds()
+        confettiView.intensity = 0.75
+        confettiView.type = .Diamond
+        confettiView.startConfetti()
+        Helper.perfomDelay(time: 1.2) {
+            confettiView.stopConfetti()
+            confettiView.removeFromSuperview()
         }
-        
-        superView.addSubview(waterDropView)
-        waterDropView.bindFrameToSuperviewBounds()
     }
     
     func buttonYesTapped() {

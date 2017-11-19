@@ -12,6 +12,7 @@ import SCLAlertView
 import AlamofireImage
 import FirebaseAnalytics
 import Spring
+import SAConfettiView
 
 class LessonTypingViewController: UIViewController, LessonViewCellDelegate, AudioPlayerDelegate {
     
@@ -186,6 +187,8 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             if (starCountSave != 0) && (score > starCountSave) {
                 score -= starCountSave
                 score += starCount
+            } else if (starCountSave == 0) {
+                score += starCount
             }
             
             defaults.set(starCount, forKey: userValue)
@@ -254,6 +257,7 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
             case .PassLesson:
                 alertView?.addButton("Done", action: {self.buttonDoneTapped()})
                 alertView?.showSuccess("Congratulation!", subTitle: "You are passed lesson \(self.name!)")
+                showCongratulationsAnim(superView: (self.alertView?.view)!)
             default:
                 print("No define alert type")
             }
@@ -264,6 +268,19 @@ class LessonTypingViewController: UIViewController, LessonViewCellDelegate, Audi
                     dismiss(animated: true, completion: nil)
                     return
             }
+        }
+    }
+    
+    func showCongratulationsAnim(superView: UIView) {
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        superView.addSubview(confettiView)
+        confettiView.bindFrameToSuperviewBounds()
+        confettiView.intensity = 0.75
+        confettiView.type = .Diamond
+        confettiView.startConfetti()
+        Helper.perfomDelay(time: 1.2) {
+            confettiView.stopConfetti()
+            confettiView.removeFromSuperview()
         }
     }
     

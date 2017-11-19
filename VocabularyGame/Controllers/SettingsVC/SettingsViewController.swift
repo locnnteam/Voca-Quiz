@@ -52,11 +52,11 @@ class SettingsViewController: UIViewController {
     func loadSettingsItem() {
         //Todo: Score
         score = UserDefaults.standard.integer(forKey: ScoreData)
-        guard let score = SettingsItem(label: ItemLabel.score.rawValue, photo: nil) else {
+        guard let score = SettingsItem(label: ItemLabel.score.rawValue, photo: #imageLiteral(resourceName: "score")) else {
             fatalError("Unable to instantiate your score")
         }
         
-        guard let ranking = SettingsItem(label: ItemLabel.ranking.rawValue, photo: nil) else {
+        guard let ranking = SettingsItem(label: ItemLabel.ranking.rawValue, photo: #imageLiteral(resourceName: "ranking")) else {
             fatalError("Unable to instantiate ranking")
         }
         self.sections.updateValue([score, ranking], forKey: 0)
@@ -157,7 +157,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             if score == 0 {
                 score = UserDefaults.standard.integer(forKey: ScoreData)
             }
-            alertView.showSuccess("Your score", subTitle: "\(score) points")
+            alertView.showSuccess("Your score", subTitle: "\(score) coins")
 //            showCongratulationsAnim(superView: alertView.view)
             break
         case ItemLabel.rate.rawValue:
