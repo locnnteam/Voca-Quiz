@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import AlamofireImage
 import FirebaseAnalytics
+import Firebase
 import SCLAlertView
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, DownloadFileDelegate, HeaderMainViewDelegate, LessonViewControllerDelegate {
@@ -45,8 +46,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadHomeData()
+        //self.loadHomeData()
         LoadingLaunchView.shared.showOverlay(view: self.view)
+        self.testFireBase()
         
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -64,6 +66,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             ])
     }
 
+    func testFireBase() {
+        let ref = Database.database().reference(withPath: "VocaQuiz")
+        
+        //Level Data
+        let levelRef = ref.child("quiz_items")
+        
+        levelRef.observeSingleEvent(of: .value, with: {snapshot in
+            for item in snapshot.children {
+                let level = Level(snapshot: item as! DataSnapshot)
+                self.levels.append(level)
+            }
+            self.levels = self.levels.sorted(by: { Int($0.levelPriority!)! < Int($1.levelPriority!)! })
+            LoadingLaunchView.shared.hideOverlayView()
+            self.collectionView?.reloadData()
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -223,7 +242,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if isMainView {
             self.lessonVC = LessonViewController()
             self.lessonVC?.delegate = self
-            self.lessonVC?.setup(maxfailed: 5, duration: level.levelTime, numImageFirstView: level.levelNumberRamdom, name: level.levelName, listVocabulary: level.listVocabulary, nextName: nextLevel.levelName, nextVocabularies: nextLevel.listVocabulary)
+            self.lessonVC?.setup(maxfailed: 5, duration: level.levelTime, numImageFirstView: level.levelNumberRandom, name: level.levelName, listVocabulary: level.listVocabulary, nextName: nextLevel.levelName, nextVocabularies: nextLevel.listVocabulary)
         } else {
             self.lessonTyping = LessonTypingViewController()
             self.lessonTyping?.setup(maxfailed: 5, duration: level.levelTime, name: level.levelName, listVocabulary: level.listVocabulary)

@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class LessonItem {
     
     //MARK: Properties
+    let ref: DatabaseReference?
     
     var levelName: String
     var id: String?
@@ -47,5 +49,19 @@ class LessonItem {
         self.defination = defination
         self.example = example
         self.spelling = spelling
+        self.ref = nil
+    }
+    
+    init(snapshot: DataSnapshot) {
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        self.levelName = snapshotValue["levelName"] as! String
+        self.id = snapshotValue["id"] as? String
+        self.name = snapshotValue["name"] as! String
+        self.image = snapshotValue["image"] as? String
+        self.audio = snapshotValue["audio"] as? String
+        self.defination = snapshotValue["defination"] as? String
+        self.example = snapshotValue["example"] as? String
+        self.spelling = snapshotValue["spelling"] as? String
+        ref = snapshot.ref
     }
 }

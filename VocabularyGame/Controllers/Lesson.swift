@@ -6,25 +6,24 @@
 //  Copyright © 2017 bktech. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Firebase
 
 class Level {
     
     //MARK: Properties
+    let ref: DatabaseReference?
     
     var isOpenned: Bool = false
 
     var listVocabulary: [LessonItem] = []
     var levelTime: Double = 0
-    var levelNumberRamdom: Int = 0
+    var levelNumberRandom: Int = 0
     var levelID: String?
     var levelPriority: String?
     var levelName: String?
     var levelThumnail: String?
-    
-    var starCount = 0
-    
+
     //MARK: Initialization
     
     init?(isOpenned: Bool, name: String?, id: String?, priority: String?, time: Double, randomNum: Int, thumnail: String?, listVocabulary: Array<LessonItem>) {
@@ -33,8 +32,25 @@ class Level {
         self.levelID = id
         self.levelPriority = priority
         self.levelTime = time
-        self.levelNumberRamdom = randomNum
+        self.levelNumberRandom = randomNum
         self.listVocabulary = listVocabulary
-        self.levelThumnail = thumnail
+        self.levelThumnail = thumnail!
+        self.ref = nil
+    }
+    
+    init(snapshot: DataSnapshot) {
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+
+        self.levelName = snapshotValue["levelName"] as? String
+        self.levelID = snapshotValue["levelPriority"] as? String
+        self.levelPriority = snapshotValue["levelPriority"] as? String
+        self.levelTime = snapshotValue["levelTime"] as! Double
+        self.levelNumberRandom = snapshotValue["levelNumberRandom"] as! Int
+        self.levelThumnail = snapshotValue["levelThumnailURL"] as? String
+        
+        //LessonItem Data
+//        let lessonItem = LessonItem(snapshot: snapshot.)
+        self.listVocabulary = snapshotValue["lessons"] as! Array<LessonItem>
+        ref = snapshot.ref
     }
 }

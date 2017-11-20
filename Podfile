@@ -12,6 +12,7 @@ pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.gi
 pod 'M13ProgressSuite'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
+pod 'Firebase/Database'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 pod 'FaveButton', '~> 2.0.3'
 pod 'NVActivityIndicatorView'
