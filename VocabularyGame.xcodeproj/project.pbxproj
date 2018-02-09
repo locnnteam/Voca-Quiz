@@ -19,6 +19,7 @@
 		4805792A1F6621370053BB89 /* HomeContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480579291F6621370053BB89 /* HomeContentViewCell.xib */; };
 		480A80661F4484B3000AF97D /* false.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 480A80651F4484B3000AF97D /* false.mp3 */; };
 		480A806A1F4485A2000AF97D /* pass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 480A80691F4485A2000AF97D /* pass.mp3 */; };
+		4816D31C1FC952BE0051BD05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4816D31B1FC952BE0051BD05 /* GoogleService-Info.plist */; };
 		481D624C1F6D18CC00849CB1 /* LessonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 481D624B1F6D18CC00849CB1 /* LessonViewController.xib */; };
 		482144B11F8081E200AAD44D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482144AF1F8081E200AAD44D /* FavoritesTableViewCell.swift */; };
 		48284C331F52760F000F49D7 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48284C321F52760F000F49D7 /* UIImageViewExt.swift */; };
@@ -110,7 +111,6 @@
 		48F6BBA41FA0198C00BFDB2C /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6BBA21FA0198C00BFDB2C /* SettingsTableViewCell.swift */; };
 		48F6BBA51FA0198C00BFDB2C /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F6BBA31FA0198C00BFDB2C /* SettingsTableViewCell.xib */; };
 		48F6BBA71FA01DC000BFDB2C /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6BBA61FA01DC000BFDB2C /* SettingsItem.swift */; };
-		48FBBC4C1F63D7670066AC41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48FBBC4B1F63D7670066AC41 /* GoogleService-Info.plist */; };
 		FFDEA71D61F574E1468A7DFB /* Pods_VocabularyGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F883AC09DDCB7776F6E1D66 /* Pods_VocabularyGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +128,7 @@
 		480579291F6621370053BB89 /* HomeContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeContentViewCell.xib; sourceTree = "<group>"; };
 		480A80651F4484B3000AF97D /* false.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = false.mp3; sourceTree = "<group>"; };
 		480A80691F4485A2000AF97D /* pass.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pass.mp3; sourceTree = "<group>"; };
+		4816D31B1FC952BE0051BD05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Data/MMA_Quiz/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		481D624B1F6D18CC00849CB1 /* LessonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonViewController.xib; sourceTree = "<group>"; };
 		482144AF1F8081E200AAD44D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		48284C321F52760F000F49D7 /* UIImageViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
@@ -223,7 +224,6 @@
 		48F6BBA21FA0198C00BFDB2C /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		48F6BBA31FA0198C00BFDB2C /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		48F6BBA61FA01DC000BFDB2C /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
-		48FBBC4B1F63D7670066AC41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F883AC09DDCB7776F6E1D66 /* Pods_VocabularyGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89810587BE1BF54EE50A68A0 /* Pods-VocabularyGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyGame/Pods-VocabularyGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -410,7 +410,7 @@
 				48AD56CA1F3BE60E00ADBD6E /* Assets.xcassets */,
 				48AD56CC1F3BE60E00ADBD6E /* LaunchScreen.storyboard */,
 				48AD56CF1F3BE60E00ADBD6E /* Info.plist */,
-				48FBBC4B1F63D7670066AC41 /* GoogleService-Info.plist */,
+				4816D31B1FC952BE0051BD05 /* GoogleService-Info.plist */,
 				48AD56C71F3BE60E00ADBD6E /* VocabularyGame.xcdatamodeld */,
 			);
 			path = VocabularyGame;
@@ -715,6 +715,7 @@
 				480A80661F4484B3000AF97D /* false.mp3 in Resources */,
 				480579221F64DB090053BB89 /* LessonViewCell.xib in Resources */,
 				48AD57331F3BE8E600ADBD6E /* Fragment.png in Resources */,
+				4816D31C1FC952BE0051BD05 /* GoogleService-Info.plist in Resources */,
 				48EA2EA51FA4533E00B43B8F /* BannerAdView.xib in Resources */,
 				48AD57241F3BE8E600ADBD6E /* Info.plist in Resources */,
 				484D02C11FAECEE200501993 /* GameCenterController.xib in Resources */,
@@ -734,7 +735,6 @@
 				48AD56E51F3BE7BE00ADBD6E /* LessonTypingViewController.xib in Resources */,
 				488155B71F779992007D95DC /* DictionaryViewController.xib in Resources */,
 				4805792A1F6621370053BB89 /* HomeContentViewCell.xib in Resources */,
-				48FBBC4C1F63D7670066AC41 /* GoogleService-Info.plist in Resources */,
 				480579281F64DB090053BB89 /* LessonNavView.xib in Resources */,
 				488F808C1F7DD7AC00231AF2 /* FavoriteViewController.xib in Resources */,
 				48AD56CB1F3BE60E00ADBD6E /* Assets.xcassets in Resources */,
@@ -772,9 +772,52 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VocabularyGame/Pods-VocabularyGame-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/M13ProgressSuite/M13ProgressSuite.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/SAConfettiView/SAConfettiView.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaveButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13ProgressSuite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAConfettiView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -787,13 +830,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VocabularyGame-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

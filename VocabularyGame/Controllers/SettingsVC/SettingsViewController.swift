@@ -149,8 +149,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 LoadingLaunchView.shared.showOverlay(view: self.view)
                 self.authenticateLocalPlayer()
             }
-            kAppDelegate.bannerAdView.isTabbarShow = false
-            kAppDelegate.bannerAdView.updateBannerFrame(pos: .NoTabbar)
             break
         case ItemLabel.score.rawValue:
             let alertView = SCLAlertView()
@@ -218,6 +216,8 @@ extension SettingsViewController:  GKGameCenterControllerDelegate {
     }
     
     func checkGCLeaderboard() {
+        kAppDelegate.bannerAdView.isTabbarShow = false
+        kAppDelegate.bannerAdView.updateBannerFrame(pos: .NoTabbar)
         let gcVC = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = .leaderboards
@@ -234,6 +234,8 @@ extension SettingsViewController:  GKGameCenterControllerDelegate {
                 // 1 Show login if player is not logged in
                 self.present(ViewController!, animated: true, completion: nil)
                 self.isAuthenticateLocal = true
+                kAppDelegate.bannerAdView.isTabbarShow = false
+                kAppDelegate.bannerAdView.updateBannerFrame(pos: .NoTabbar)
             } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true
@@ -255,6 +257,8 @@ extension SettingsViewController:  GKGameCenterControllerDelegate {
             } else {
                 // 3 Game center is not enabled on the users device
                 self.gcEnabled = false
+                kAppDelegate.bannerAdView.isTabbarShow = true
+                kAppDelegate.bannerAdView.updateBannerFrame(pos: .HaveTabbar)
             }
         }
     }

@@ -8,11 +8,12 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class Level {
     
     //MARK: Properties
-    let ref: DatabaseReference?
+    let ref:  DatabaseReference?
     
     var isOpenned: Bool = false
 
