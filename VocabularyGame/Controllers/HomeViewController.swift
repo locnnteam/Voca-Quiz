@@ -241,9 +241,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         debugPrint("Finished download file from server side")
         LoadingOverlay.shared.hideOverlayView()
         if isMainView{
-            //self.navigationController?.pushViewController(self.lessonVC!, animated: true)
-            let nav = UINavigationController(rootViewController: self.lessonVC!)
-            self.navigationController?.present(nav, animated: true, completion: nil)
+            self.navigationController?.pushViewController(self.lessonVC!, animated: true)
+//            let nav = UINavigationController(rootViewController: self.lessonVC!)
+//            self.navigationController?.present(nav, animated: true, completion: nil)
         }else{
             let nav = UINavigationController(rootViewController: self.lessonTyping!)
             self.navigationController?.present(nav, animated: true, completion: nil)

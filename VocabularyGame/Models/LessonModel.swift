@@ -20,40 +20,40 @@ class LessonModel: NSObject {
             if (response.error == nil) {
                 
                 if let data = response.data{
-                    let json = JSON(data: data)
+                    let json = try? JSON(data: data)
                     //init lesson
-                    for index in 0...(json.count - 1){
-                        guard let lessons = json[index]["lessons"].array else{
+                    for index in 0...((json?.count)! - 1){
+                        guard let lessons = json![index]["lessons"].array else{
                             debugPrint("Lesson is null")
                             break
                         }
 
-                        guard let randomNumber = json[index]["levelNumberRandom"].int else{
+                        guard let randomNumber = json![index]["levelNumberRandom"].int else{
                             debugPrint("levelNumberRandom is nil")
                             continue
                         }
                         
-                        guard let id = json[index]["levelID"].string else{
+                        guard let id = json![index]["levelID"].string else{
                             debugPrint("levelID is nil")
                             continue
                         }
                         
-                        guard let priority = json[index]["levelPriority"].string else{
+                        guard let priority = json![index]["levelPriority"].string else{
                             debugPrint("levelPriority is nil")
                             continue
                         }
                         
-                        guard let levelName = json[index]["levelName"].string else{
+                        guard let levelName = json![index]["levelName"].string else{
                             debugPrint("levelName is nil")
                             continue
                         }
                         
-                        guard let thumnail = json[index]["levelThumnailURL"].string else{
+                        guard let thumnail = json![index]["levelThumnailURL"].string else{
                             debugPrint("levelThumnailURL is nil")
                             continue
                         }
                         
-                        guard let time = json[index]["levelTime"].double else{
+                        guard let time = json![index]["levelTime"].double else{
                             debugPrint("levelTime is nil")
                             continue
                         }

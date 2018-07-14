@@ -176,8 +176,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         Alamofire.request(FireBaseURL.jsonAdsIDURL).responseJSON { response in
             if (response.error == nil) {
                 if let data = response.data{
-                    let json = JSON(data: data)
-                    guard let id = json[0]["adsID"].string else{
+                    let json = try? JSON(data: data)
+                    guard let id = json![0]["adsID"].string else{
                         debugPrint("adID is nil")
                         return
                     }
