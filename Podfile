@@ -21,4 +21,5 @@ pod 'FacebookLogin'
 pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
 pod 'RAMAnimatedTabBarController', '~> 2.0.13'
 pod 'SAConfettiView'
+pod 'CHTCollectionViewWaterfallLayout/Swift'
 end

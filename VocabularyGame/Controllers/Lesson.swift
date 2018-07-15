@@ -27,7 +27,7 @@ class Level {
 
     //MARK: Initialization
     
-    init?(isOpenned: Bool, name: String?, id: String?, priority: String?, time: Double, randomNum: Int, thumnail: String?, listVocabulary: Array<LessonItem>) {
+    init?(isOpenned: Bool, name: String?, id: String?, priority: String?, time: Double, randomNum: Int, thumnail: String?, listVocabulary: [LessonItem]) {
         self.isOpenned = isOpenned
         self.levelName = name
         self.levelID = id
@@ -51,7 +51,7 @@ class Level {
         
         //LessonItem Data
 //        let lessonItem = LessonItem(snapshot: snapshot.)
-        self.listVocabulary = snapshotValue["lessons"] as! Array<LessonItem>
+        self.listVocabulary = snapshotValue["lessons"] as! [LessonItem]
         ref = snapshot.ref
     }
 }

@@ -18,10 +18,10 @@ class DownloadFile: ImageDownLoadDelegate {
     private var audioDownloaded = false
     private var imageDownloaded = false
     private var name: String?
-    private var listVocabulary = [LessonItem]()
+    private var listVocabulary: [LessonItem] = []
     var delegate: DownloadFileDelegate?
     
-    init(name: String?, listVocabulary: Array<LessonItem>) {
+    init(name: String?, listVocabulary: [LessonItem]) {
         self.name = name
         self.listVocabulary = listVocabulary
     }
@@ -56,7 +56,7 @@ class DownloadFile: ImageDownLoadDelegate {
         //Download Image into local file
         var downloadImages = [String: String]()
         var downloadAudios = [String: String]()
-        for lesson in listVocabulary {
+        for lesson in self.listVocabulary {
             //check is exist file in level
             if !isDataExist(levelName: name, fileName: "\(lesson.name).png"){
                 downloadImages.updateValue(lesson.image!, forKey: lesson.name)

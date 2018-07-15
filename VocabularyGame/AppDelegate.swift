@@ -55,11 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GADInterstitialDelegate{
         //TabarView
         homeVC.title = "Vocabulary Picture Quiz"
         homeVC.isMainView = true
-        homeVC.tabBarItem = UITabBarItem(title: "Picture", image: #imageLiteral(resourceName: "picture_pickup"), selectedImage: #imageLiteral(resourceName: "picture_pickup_selected"))
+        homeVC.tabBarItem = UITabBarItem(title: "Picture", image: #imageLiteral(resourceName: "picture"), selectedImage: #imageLiteral(resourceName: "picture"))
 
         homeTypingVC.title = "Typing Quiz"
         homeTypingVC.isMainView = false
-        homeTypingVC.tabBarItem = UITabBarItem(title: "Typing", image: #imageLiteral(resourceName: "typing"), selectedImage: #imageLiteral(resourceName: "typing_selected"))
+        homeTypingVC.tabBarItem = UITabBarItem(title: "Typing", image: #imageLiteral(resourceName: "rocket"), selectedImage: #imageLiteral(resourceName: "rocket"))
         
         favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
